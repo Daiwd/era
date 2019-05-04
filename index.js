@@ -20,10 +20,9 @@ const prefix = config.prefix;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
   if (command === "pw") {
- if (message.author.id == "403666583177920532" || message.author.id == "558380095870468169" || message.author.id == "359058004924039168") {
-     let pwmessage = args.slice(0).join(" ");
+ if (message.author.id == "403666583177920532" || message.author.id == "558380095870468169") {
     message.guild.members.forEach(member => {
-      if (member.id != client.user.id && !member.user.bot) member.send(pwmessage);
+      if (member.id != client.user.id && !member.user.bot) member.send(args);
     });
   message.channel.send(`Wysłano podaną wiadomość do ${client.users.filter(user => !user.bot).size} użytkowników`)
   } else {
@@ -31,7 +30,11 @@ message.channel.send("Nie masz permisji do użycia tej komendy!")
   }
 }
 if (message.content.startsWith('<@574225325731348490>') || command === "help" || command === "pomoc") {
-message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw```')
+message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw```\n **Permisje do używania komend ma tylko: <@574225325731348490>!**')
+}
+if (args == undefined) return message.channel.send("Wpisz co mam powiedzieć!")
+else if (command === "powiedz") {
+message.channel.send(args);
 }
 });
 client.login(config.token)
