@@ -32,9 +32,11 @@ message.channel.send("Nie masz permisji do użycia tej komendy!")
 if (message.content.startsWith('<@574225325731348490>') || command === "help" || command === "pomoc") {
 message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw```\n **Permisje do używania komend ma tylko: <@574225325731348490>!**')
 }
-if (args == undefined) return message.channel.send("Wpisz co mam powiedzieć!")
-else if (command === "powiedz") {
+if (command === "powiedz") {
+let wiadomosc = args
+if (args) {
 message.channel.send(args);
+} else { message.channel.send("Wpisz co mam powiedzieć!") }
 }
 });
 client.login(config.token)
