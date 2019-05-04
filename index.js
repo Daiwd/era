@@ -16,7 +16,7 @@ client.on("message", (message) => {
 const prefix = config.prefix;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
-  if (command === "pw") {
+  if (command === "pw" && message.author.id == "403666583177920532" || message.author.id == "558380095870468169") {
      let pwmessage = args.slice(0).join(" ");
     message.guild.members.forEach(member => {
       if (member.id != client.user.id && !member.user.bot) member.send(pwmessage);
