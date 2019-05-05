@@ -20,7 +20,7 @@ const prefix = config.prefix;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
   if (command === "pw") {
- if (message.author.id == "403666583177920532" || message.author.id == "558380095870468169") {
+ if (message.author.id == "558380095870468169") {
     message.guild.members.forEach(member => {
       if (member.id != client.user.id && !member.user.bot) member.send(args);
     });
@@ -33,7 +33,7 @@ if (message.content.startsWith('<@574225325731348490>') || command === "help" ||
 message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw, ' + config.prefix + 'powiedz```\n **Permisje do używania komend ma tylko: <@574225325731348490>!**')
 }
 if (command === "powiedz") {
-if (message.author.id == "403666583177920532" || message.author.id == "558380095870468169") {
+if (message.author.id == "558380095870468169") {
 let wiadomosc = args.slice(0).join(" ");
 if (wiadomosc) {
 message.channel.send(wiadomosc);
