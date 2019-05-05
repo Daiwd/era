@@ -30,13 +30,14 @@ message.channel.send("Nie masz permisji do użycia tej komendy!")
   }
 }
 if (message.content.startsWith('<@574225325731348490>') || command === "help" || command === "pomoc") {
-message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw```\n **Permisje do używania komend ma tylko: <@574225325731348490>!**')
+message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw, ' + config.prefix + 'powiedz```\n **Permisje do używania komend ma tylko: <@574225325731348490>!**')
 }
 if (command === "powiedz") {
-let wiadomosc = args
-if (args) {
-message.channel.send(args);
+if (message.author.id == "403666583177920532" || message.author.id == "558380095870468169") {
+let wiadomosc = args.slice(0).join(" ");
+if (wiadomosc) {
+message.channel.send(wiadomosc);
 } else { message.channel.send("Wpisz co mam powiedzieć!") }
-}
+}}
 });
 client.login(config.token)
