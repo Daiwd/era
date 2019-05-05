@@ -38,6 +38,18 @@ let wiadomosc = args.slice(0).join(" ");
 if (wiadomosc) {
 message.channel.send(wiadomosc);
 } else { message.channel.send("Wpisz co mam powiedzieć!") }
-}}
+} else {
+message.channel.send("Nie masz permisji do użycia tej komendy!")
+  }}
+if (command === "status") {
+if (message.author.id == "558380095870468169") {
+    let wiadomosc = args.slice(0).join(" ");
+if (wiadomosc) {
+client.user.setActivity(wiadomosc);
+message.channel.send("Ustawiono podany status!")
+} else { message.channel.send("Wpisz co mam powiedzieć!") }
+} else {
+message.channel.send("Nie masz permisji do użycia tej komendy!")
+  }}
 });
 client.login(config.token)
