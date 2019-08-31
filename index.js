@@ -31,18 +31,18 @@ message.channel.send("Nie masz permisji do użycia tej komendy!")
 }
 if (message.content.startsWith('<@574225325731348490>') || command === "help" || command === "pomoc") {
 message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw, ' + config.prefix + 'powiedz```\n **Permisje do używania komend ma tylko: <@574225325731348490>!**')
-}
-if (message.content.startsWith('Cześć') /*|| message.content.startsWith('Cześć!') || message.content.startsWith('Czesc') */) return message.channel.send("Cześć!")
-  else if (message.content.startsWith('Hej') /*|| message.content.startsWith('Hej!')*/) return message.channel.send('Hej!')
+} else
+if (message.content.startsWith('Cześć') || message.content.startsWith('Cześć!') || message.content.startsWith('Czesc')) { message.channel.send("Cześć!") }
+  else if (message.content.startsWith('Hej') || message.content.startsWith('Hej!')) { message.channel.send('Hej!') }
 if (command === "powiedz") {
 if (message.author.id == "558380095870468169") {
 let wiadomosc = args.slice(0).join(" ");
-/*if (wiadomosc) {
+if (wiadomosc) {
 message.channel.send(wiadomosc);
 } else { message.channel.send("Wpisz co mam powiedzieć!") }
 } else {
 message.channel.send("Nie masz permisji do użycia tej komendy!")
-  }}*/
+  }}
 if (command === "status") {
 if (message.author.id == "558380095870468169") {
     let wiadomosc = args.slice(0).join(" ");
