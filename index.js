@@ -34,7 +34,7 @@ message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw, ' + 
 } else if (message.content.startsWith('Cześć') || message.content.startsWith('Cześć!') || message.content.startsWith('Czesc')) { message.channel.send("Cześć!"); }
   else if (message.content.startsWith('Hej') || message.content.startsWith('Hej!')) { message.channel.send('Hej!'); }
 if (command === "powiedz") {
-if (message.author.id == "558380095870468169") {
+if (message.author.id == "657230340032823326") {
 let wiadomosc = args.slice(0).join(" ");
 if (wiadomosc) {
 message.channel.send(wiadomosc);
@@ -43,7 +43,7 @@ message.channel.send(wiadomosc);
 message.channel.send("Nie masz permisji do użycia tej komendy!")
   }}
 if (command === "status") {
-if (message.author.id == "558380095870468169") {
+if (message.author.id == "55838009587046816") 
     let wiadomosc = args.slice(0).join(" ");
 if (wiadomosc) {
 client.user.setActivity(wiadomosc);
