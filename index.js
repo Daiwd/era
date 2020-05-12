@@ -51,7 +51,7 @@ client.on("message", (message) => {
     }
     
     if (command === "status") {
-        if (!message.author.id == "55838009587046816") return message.channel.send("Nie masz permisji do użycia tej komendy!"); 
+        if (!message.author.id == "688161946377257002") return message.channel.send("Nie masz permisji do użycia tej komendy!"); 
         var wiadomosc = args.slice(0).join(" ");
         if (!wiadomosc) return message.channel.send("RONACORD");
         client.user.setActivity(wiadomosc);
