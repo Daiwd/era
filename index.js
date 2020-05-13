@@ -37,8 +37,8 @@ client.on("message", (message) => {
     }
 
     //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
-    if (message.content.startsWith('<@688161946377257002>') || command === "help" || command === "pomoc") {
-        message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw, ' + config.prefix + 'powiedz```\n **Permisje do używania komend ma tylko: <@5688161946377257002>!**')
+    if (message.content.startsWith('<@709733180780839013>') || command === "help" || command === "pomoc") {
+        message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw, ' + config.prefix + 'powiedz```\n **Permisje do używania komend ma tylko: <@688161946377257002>!**')
     } else if (message.content.startsWith('Cześć') || message.content.startsWith('Cześć!') || message.content.startsWith('Czesc')) {
         message.channel.send("Cześć!");
     }  else if (message.content.startsWith('Hej') || message.content.startsWith('Hej!')) { message.channel.send('Hej!'); }
