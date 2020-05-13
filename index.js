@@ -38,7 +38,8 @@ client.on("message", (message) => {
 
     //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
     if (message.mentions.users.get(client.user.id) || command === "help" || command === "pomoc") {
-        message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw, ' + config.prefix + 'powiedz, ' + config.prefix + 'status```\n **Permisje do używania komend ma tylko: ' + client.users.get(688161946377257002).tag + '!**')
+        message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw, ' + config.prefix + 'powiedz, ' + config.prefix + 'status```\n**Permisje do używania komend ma tylko: ' 
+                             + client.users.find(user => user.id == 688161946377257002).tag + '!**')
     } else if (message.content.startsWith('Cześć') || message.content.startsWith('Cześć!') || message.content.startsWith('Czesc')) {
         message.channel.send("Cześć!");
     }  else if (message.content.startsWith('Hej') || message.content.startsWith('Hej!')) { message.channel.send('Hej!'); }
