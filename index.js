@@ -34,7 +34,7 @@ client.on("message", (message) => {
           })
         }
          //nie polecam używać na kanale głównym bo przyps, w dodatku kto by chciał coś wysyłać każdemu użytkownikowi na serwerze
-        } else {
+        } else { 
             message.channel.send("Nie masz permisji do użycia tej komendy!")
         }
 
