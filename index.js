@@ -22,6 +22,7 @@ client.on("ready", () => {
 })
 
 client.on("message", (message) => {
+    if (message.author.bot) return;
     const prefix = config.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
@@ -30,13 +31,12 @@ client.on("message", (message) => {
           var members = message.guild.members;
           members.tap(member => {
             if (member.id != client.user.id && !member.user.bot) member.send(args);
-          message.channel.send(`Wysłano podaną wiadomość do ${client.users.filter(user => !user.bot).size} użytkowników`);  
+          message.channel.send(`Wysłano podaną wiadomość do ${members.size} użytkowników`);  
           })
-        }
-         //nie polecam używać na kanale głównym bo przyps, w dodatku kto by chciał coś wysyłać każdemu użytkownikowi na serwerze
         } else { 
             message.channel.send("Nie masz permisji do użycia tej komendy!")
         }
+    }
 
     //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
     if (message.mentions.users.get(client.user.id) || command === "help" || command === "pomoc") {
