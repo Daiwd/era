@@ -26,14 +26,17 @@ client.on("message", (message) => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     if (command === "pw") { //Za to łatwo bana wyłapać :>
-        if (message.author.id == "380427062390947852") {
-                if (member.id != client.user.id && !member.user.bot) member.send(args);
-            });
-        message.channel.send(`Wysłano podaną wiadomość do ${client.users.filter(user => !user.bot).size} użytkowników`) //nie polecam używać na kanale głównym bo przyps, w dodatku kto by chciał coś wysyłać każdemu użytkownikowi na serwerze
+        if (message.author.id == "380427062390947852")   {
+          var members = message.guild.members;
+          members.tap(member => {
+            if (member.id != client.user.id && !member.user.bot) member.send(args);
+          message.channel.send(`Wysłano podaną wiadomość do ${client.users.filter(user => !user.bot).size} użytkowników`);  
+          })
+        }
+         //nie polecam używać na kanale głównym bo przyps, w dodatku kto by chciał coś wysyłać każdemu użytkownikowi na serwerze
         } else {
             message.channel.send("Nie masz permisji do użycia tej komendy!")
         }
-    }
 
     //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
     if (message.mentions.users.get(client.user.id) || command === "help" || command === "pomoc") {
