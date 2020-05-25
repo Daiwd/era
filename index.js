@@ -19,7 +19,7 @@ const config = require("./config.json");
 
 client.on("ready", () => {
     console.log(`${client.user.tag} gotowy do pracy na ${client.guilds.size} serwerach przy ${client.users.filter(user => !user.bot).size} użytkownikach!`);
-    client.user.setActivity(`YoloCraft Osoby: ${client.guilds.get("714236135869775913").members.size}`);
+    client.user.setActivity(`YoloCraft | ${client.guilds.get("714236135869775913").members.size}`);
 })
 
 client.on("message", (message) => {
@@ -58,7 +58,7 @@ client.on("message", (message) => {
         if (!message.author.id == "380427062390947852") return message.channel.send("Nie masz permisji do użycia tej komendy!"); 
         var wiadomosc = args.slice(0).join(" ");
         if (!wiadomosc) return message.channel.send("RONACORD");
-        client.user.setActivity(wiadomosc);
+        client.user.setActivity(wiadomosc + `| Liczba Użytkowników: ${client.guilds.get("714236135869775913").members.size}`);
         message.channel.send("Ustawiono podany status!")
     }
 });
