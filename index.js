@@ -58,8 +58,8 @@ client.on("message", (message) => {
         if (!message.author.id == "380427062390947852") return message.channel.send("Nie masz permisji do użycia tej komendy!"); 
         var wiadomosc = args.slice(0).join(" ");
         if (!wiadomosc) return message.channel.send("RONACORD");
-        client.user.setActivity(wiadomosc + `| Liczba Użytkowników: ${client.guilds.get("714236135869775913").members.size}`);
-        message.channel.send("Ustawiono podany status!")
+        client.user.setActivity(wiadomosc + `| Osoby: ${client.guilds.get("714236135869775913").members.size}`);
+        message.channel.send("Status został zmieniony")
     }
 });
 client.login(config.token)
