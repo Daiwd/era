@@ -18,14 +18,10 @@ const config = require("./config.json");
 
 client.on("ready", () => {
   console.log(
-    `${client.user.tag} gotowy do pracy na ${
-      client.guilds.size
-    } serwerach przy ${
-      client.users.filter(user => !user.bot).size
-    } użytkownikach!`
+    `${client.user.tag} gotowy do pracy na ${client.guilds.size} serwerach przy ${client.users.filter(user => !user.bot).size} użytkownikach!`
   );
   client.user.setActivity(
-    `YoloCraft | ${client.guilds.get("714236135869775913").members.size}`
+    `YoloCraft | ${client.guilds.get("715363009102479391").members.size}`
   );
 });
 
@@ -97,7 +93,7 @@ client.on("message", message => {
     if (!wiadomosc) return message.channel.send("RONACORD");
     client.user.setActivity(
       wiadomosc +
-        `| Osoby: ${client.guilds.get("714236135869775913").members.size}`
+        `| Osoby: ${client.guilds.get("715363009102479391").members.size}`
     );
     message.channel.send("Status został zmieniony");
   }
