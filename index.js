@@ -150,7 +150,7 @@ client.on("message", message => {
     var suggestion = args.join(" ").toString();
     const embed = new Discord.RichEmbed()
       .setColor("#00ff00")
-      .setAuthor(message.author.username, message.author.avatarURL)
+      .setAuthor(message.author.username,URL)
       .setDescription(suggestion);
     message.guild.channels
       .get("715520608502546463")
@@ -165,7 +165,7 @@ client.on("message", message => {
     var skarga = args.join(" ").toString();
     const embed = new Discord.RichEmbed()
       .setColor("#ff4d4d")
-      .setAuthor(message.author.username, message.author.avatarURL)
+      .setAuthor(message.author.username,)
       .setDescription(skarga);
     message.guild.channels
       .get("715520630849667114")
