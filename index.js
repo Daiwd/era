@@ -59,5 +59,43 @@ client.on("message", (message) => {
         client.user.setActivity(wiadomosc);
         message.channel.send("Ustawiono podany status!")
     }
+  
+    if (command == "event") {
+    message.delete();
+    var role = message.guild.roles.get(""); //id organizatora eventów
+    var pinged_role = message.guild.roles.get(args[0])
+    || message.guild.roles.find(r => r.name == args.join(" ").toString());
+    if (!message.member.roles.get(role)) return;
+    message.channel.send(`${pinged_role.toString()}`);
+}
+
+  if ()
+    if (message.guild.roles.find(role => role.name == message.content)) {
+    if (message.channel.id !== "") return;
+    if (message.author.bot) return;
+    if (message.mentions.roles) return;
+    var roleToGive = message.guild.roles.find(role => role.name == message.content);
+    if (roleToGive == message.guild.roles.get()) return;
+    
+    message.member.addRole(roleToGive);
+}
+
+if (command == "sugestia") {
+    var suggestion = args.join(" ").toString();
+    const embed = new Discord.RichEmbed()
+    .setColor("#00FF00")
+    .setAuthor(message.author.username, message.author.avatarURL)
+    .setDescription(suggestion);
+    message.guild.channels.get("").send(embed);
+}
+
+if (command == "skarga") {
+    var skarga = args.join(" ").toString();
+    const embed = new Discord.RichEmbed()
+    .setColor("#FF0000")
+    .setAuthor(message.author.username, message.author.avatarURL)
+    .setDescription(skarga);
+    message.guild.channels.get("").send(embed);    
+}
 });
 client.login(config.token)
