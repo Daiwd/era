@@ -68,12 +68,19 @@ client.on("message", message => {
         "status```\n**Permisje do używania komend ma tylko: " +
         client.users.find(user => user.id == 380427062390947852).tag +
         "!**"
-    );
+        );
   } else if (
     message.content.startsWith("Cześć") |
     message.channel.send("Cześć!")
    { else if (
+    message.content.startsWith("Cześć") ||
+    message.content.startsWith("Cześć!") ||
+    message.content.startsWith("Czesc")
+  ) {
+    message.channel.send("Cześć!");
+  } else if (
     message.content.startsWith("Hej") ||
+    message.content.startsWith("Hej!")
   ) {
     message.channel.send("Hej!");
   }
