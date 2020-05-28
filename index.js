@@ -59,7 +59,7 @@ client.on("message", message => {
     command === "pomoc"
   ) {
     message.channel.send(
-      "TYCH KOMEND NIE MOŻESZ UŻYWAĆ! to:\n```" +
+      "TYCH KOMEND NIE MOŻESZ UŻYWAĆ!\n```" +
         config.prefix +
         "pw, " +
         config.prefix +
@@ -70,14 +70,10 @@ client.on("message", message => {
         "!**"
     );
   } else if (
-    message.content.startsWith("Cześć") ||
-    message.content.startsWith("Cześć!") ||
-    message.content.startsWith("Czesc")
-  ) {
-    message.channel.send("Cześć!");
-  } else if (
+    message.content.startsWith("Cześć") |
+    message.channel.send("Cześć!")
+   { else if (
     message.content.startsWith("Hej") ||
-    message.content.startsWith("Hej!")
   ) {
     message.channel.send("Hej!");
   }
@@ -86,7 +82,7 @@ client.on("message", message => {
     if (!message.author.id == "380427062390947852")
       return message.channel.send("Nie masz permisji do użycia tej komendy!"); //poprawiłem trochę kod by było bardziej przejrzyście
     var wiadomosc = args.slice(0).join(" ");
-    if (!wiadomosc) return message.reply("Nie napisano żadnej wiadomości");
+    if (!wiadomosc) return message.reply("Napisz wiadomość jaką mam wysłać");
     message.channel.send(wiadomosc);
   }
 
