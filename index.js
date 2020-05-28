@@ -110,7 +110,7 @@ client.on("message", message => {
     message.delete(); //usuwanie wiadomości użytkownika
     var role = message.guild.roles.get("715511386809172038"); //id organizatora eventów
     var pinged_role = message.guild.roles.get(args[0]) ||
-      message.guild.roles.find(r => r.name == args.join("715546266033193031").toString()); //id roli którą należy spingować bądź jej nazwa (napisana po spacji)
+      message.guild.roles.find(r => r.name == args.join(" ").toString()); //id roli którą należy spingować bądź jej nazwa (napisana po spacji)
     if (!message.member.roles.get(role)) return; //jeśli ktoś nie ma roli zdefiniowanej wyżej to cofa
     message.channel.send(`${pinged_role.toString()}`); //wysyła ping
   }
