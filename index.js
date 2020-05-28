@@ -106,14 +106,13 @@ client.on("message", message => {
     message.channel.send("Ustawiono");
   }
 
-  if (command == "event") {
-    message.delete();
-    var role = message.guild.roles.get(""); //id organizatora eventów
-    var pinged_role =
-      message.guild.roles.get(args[0]) ||
-      message.guild.roles.find(r => r.name == args.join(" ").toString());
-    if (!message.member.roles.get(role)) return;
-    message.channel.send(`${pinged_role.toString()}`);
+  if (command == "event") {715511386809172038
+    message.delete(); //usuwanie wiadomości użytkownika
+    var role = message.guild.roles.get("715511386809172038"); //id organizatora eventów
+    var pinged_role = message.guild.roles.get(args[0]) ||
+      message.guild.roles.find(r => r.name == args.join("715546266033193031").toString()); //id roli którą należy spingować bądź jej nazwa (napisana po spacji)
+    if (!message.member.roles.get(role)) return; //jeśli ktoś nie ma roli zdefiniowanej wyżej to cofa
+    message.channel.send(`${pinged_role.toString()}`); //wysyła ping
   }
 
   if (message.channel.id == "") {
@@ -139,7 +138,8 @@ client.on("message", message => {
         "715505905898225725",
         "715511561111994378",
         "715511561111994378",
-        "715512267650760765"
+        "715512267650760765",
+        "715546266033193031"
       ];
       if (bannedRoles.includes(roleToGive)) return;
       message.member.addRole(roleToGive);
@@ -150,7 +150,7 @@ client.on("message", message => {
     var suggestion = args.join(" ").toString();
     const embed = new Discord.RichEmbed()
       .setColor("#00ff00")
-      .setAuthor(message.author.username,URL)
+      .setAuthor(message.author.tag)
       .setDescription(suggestion);
     message.guild.channels
       .get("715520608502546463")
@@ -165,7 +165,7 @@ client.on("message", message => {
     var skarga = args.join(" ").toString();
     const embed = new Discord.RichEmbed()
       .setColor("#ff4d4d")
-      .setAuthor(message.author.username,)
+      .setAuthor(message.author.tag)
       .setDescription(skarga);
     message.guild.channels
       .get("715520630849667114")
