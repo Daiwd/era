@@ -59,7 +59,7 @@ client.on("message", message => {
   //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
   if (
     message.mentions.users.get(client.user.id) ||
-    command === "pomoc" ||
+    command === "help" ||
     command === "pomoc"
   ) {
     message.channel.send(
@@ -109,21 +109,20 @@ client.on("message", message => {
   if (command == "ping") {
     message.delete(); //usuwanie wiadomości użytkownika
     var role = message.guild.roles.get("715511386809172038"); //id organizatora eventów
-    var pinged_role = message.guild.roles.get(""); //rola którą się pinguje
+    var pinged_role = message.guild.roles.get(" "); //rola którą się pinguje
     if (!message.member.roles.get(role)) return; //jeśli ktoś nie ma roli zdefiniowanej wyżej to cofa
-    message.channel.send(`${pinged_role.toString()}`); //wysyła ping
+    message.channel.send(`${pinged_role}`); //wysyła ping
   }
 
   if (command == "tak") {
-    var role = message.guild.roles.get("");
-    message.members.addRole(role);
+    message.members.addRole("715506096537600051");
   }
   
   if (command == "nie") {
-    message.member.kick("powód");
+    message.member.ban("Dostał wywalony poj");
   }
   
-  if (message.channel.id == "") {
+  if (message.channel.id == "715554804134314034") {
     //id kanalu do roli
     if (message.guild.roles.find(role => role.name == message.content)) {
       if (message.author.bot) return;
