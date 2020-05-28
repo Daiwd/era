@@ -60,7 +60,7 @@ client.on("message", message => {
   if (
     message.mentions.users.get(client.user.id) ||
     command === "pomoc" ||
-    command === "pomoc"
+    command === "Pomoc"
   ) {
     message.channel.send(
       "**LISTA KOMEND ADMINISTRACJI**\n```" +
