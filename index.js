@@ -22,6 +22,7 @@ client.on("ready", () => {
 })
 
 client.on("message", (message) => {
+    if (message.author.bot) return;
     const prefix = config.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
