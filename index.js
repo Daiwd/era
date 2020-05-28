@@ -53,17 +53,17 @@ client.on("message", message => {
   //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
   if (
     message.mentions.users.get(client.user.id) ||
-    command === "help" ||
+    command === "pomoc" ||
     command === "pomoc"
   ) {
     message.channel.send(
-      "Cześc! Moje Komendy to:\n```" +
+      "**LISTA KOMEND ADMINISTRACJI**\n```" +
         config.prefix +
-        "pw, " +
+        "PW - Wysyła do kązdego na serwerze wiadomość" 
         config.prefix +
-        "powiedz, " +
+        "powiedz - Wysyła wiadomość na danym kanale " +
         config.prefix +
-        "status```\n**Permisje do używania komend ma tylko: " +
+        "status```\n**ADMINISTRACJA MOŻE TYLKO UŻYWAĆ!" +
         client.users.find(user => user.id == "688161946377257002").tag +
         "!**"
     );
@@ -94,7 +94,7 @@ client.on("message", message => {
     var wiadomosc = args.slice(0).join(" ");
     if (!wiadomosc) return message.channel.send("RONACORD");
     client.user.setActivity(wiadomosc);
-    message.channel.send("Ustawiono podany status!");
+    message.channel.send("Ustawiono");
   }
 
   if (command == "event") {
