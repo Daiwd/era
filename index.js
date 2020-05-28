@@ -137,22 +137,22 @@ client.on("message", message => {
     }
   }
 
-  if (command == "sugestia") {
-    var suggestion = args.join(" ").toString();
+  if (command == "propozycja") {
+    var suggestion = args.join("715520608502546463").toString();
     const embed = new Discord.RichEmbed()
       .setColor("#00FF00")
       .setAuthor(message.author.username, message.author.avatarURL)
       .setDescription(suggestion);
-    message.guild.channels.get("").send(embed);
+    message.guild.channels.get("715521158472007811").send(embed);
   }
 
   if (command == "skarga") {
-    var skarga = args.join(" ").toString();
+    var skarga = args.join("715520630849667114").toString();
     const embed = new Discord.RichEmbed()
       .setColor("#FF0000")
       .setAuthor(message.author.username, message.author.avatarURL)
       .setDescription(skarga);
-    message.guild.channels.get("").send(embed);
+    message.guild.channels.get("715521158472007811").send(embed);
   }
 });
 client.login(config.token);
