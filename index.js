@@ -18,7 +18,11 @@ const config = require("./config.json");
 
 client.on("ready", () => {
   console.log(
-    `${client.user.tag} gotowy do pracy na ${client.guilds.size} serwerach przy ${client.users.filter(user => !user.bot).size} użytkownikach!`
+    `${client.user.tag} gotowy do pracy na ${
+      client.guilds.size
+    } serwerach przy ${
+      client.users.filter(user => !user.bot).size
+    } użytkownikach!`
   );
   client.user.setActivity(
     `YoloCraft | ${client.guilds.get("715363009102479391").members.size}`
