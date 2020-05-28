@@ -37,8 +37,15 @@ client.on("message", message => {
   if (command === "pw") {
     //Za to łatwo bana wyłapać :>
     if (message.author.id == "688161946377257002") {
+      var msg = args.join(" ").toString();
       message.guild.members.forEach(member => {
-        if (member.id != client.user.id && !member.user.bot) member.send(args);
+        if (member.id != client.user.id && !member.user.bot) {
+          const embed = new Discord.RichEmbed()
+            .setColor("#FFFF00")
+            .setDescription(msg)
+            .setAuthor(client.user.username, client.user.avatarURL);
+          member.send(embed);
+        }
       });
       message.channel.send(
         `Wysłano podaną wiadomość do ${
@@ -59,7 +66,7 @@ client.on("message", message => {
     message.channel.send(
       "**LISTA KOMEND ADMINISTRACJI**\n```" +
         config.prefix +
-        "PW - Wysyła do kazdego na serwerze wiadomość"  +
+        "PW - Wysyła do kazdego na serwerze wiadomość" +
         config.prefix +
         "powiedz - Wysyła wiadomość na danym kanale " +
         config.prefix +
@@ -85,7 +92,11 @@ client.on("message", message => {
       return message.channel.send("Nie masz permisji do użycia tej komendy!"); //poprawiłem trochę kod by było bardziej przejrzyście
     var wiadomosc = args.slice(0).join(" ");
     if (!wiadomosc) return message.reply("Nie napisano żadnej wiadomości");
-    message.channel.send(wiadomosc);
+    const embed = new Discord.RichEmbed()
+    .setColor("#ffff45")
+    .setDescription(wiadomosc)
+    .setAuthor(client.user.username, client.user.avatarURL);
+    message.channel.send(embed);
   }
 
   if (command === "status") {
@@ -143,7 +154,13 @@ client.on("message", message => {
       .setColor("#00ff00")
       .setAuthor(message.author.username, message.author.avatarURL)
       .setDescription(suggestion);
-    message.guild.channels.get("715520608502546463").send(embed);
+    message.guild.channels
+      .get("715520608502546463")
+      .send(embed)
+      .then(sentMessage => {
+        sentMessage.react("👍");
+        sentMessage.react("👎");
+      });
   }
 
   if (command == "skarga") {
@@ -152,8 +169,13 @@ client.on("message", message => {
       .setColor("#ff4d4d")
       .setAuthor(message.author.username, message.author.avatarURL)
       .setDescription(skarga);
-    message.guild.channels.get("715520630849667114").send(embed)
-    .then(sentMessage => { sentMessage.react(); sentMessage.react(); })
+    message.guild.channels
+      .get("715520630849667114")
+      .send(embed)
+      .then(sentMessage => {
+        sentMessage.react("👍");
+        sentMessage.react("👎");
+      });
   }
 });
 client.login(config.token);
