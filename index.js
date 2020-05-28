@@ -111,7 +111,7 @@ client.on("message", message => {
     var role = message.guild.roles.get("715511386809172038"); //id organizatora eventów
     var pinged_role = message.guild.roles.get(" "); //rola którą się pinguje
     if (!message.member.roles.get(role)) return; //jeśli ktoś nie ma roli zdefiniowanej wyżej to cofa
-    message.channel.send(`${pinged_role}`); //wysyła ping
+    message.channel.send(`${pinged_role.toString()}`); //wysyła ping
   }
 
   if (command == "tak") {
@@ -119,7 +119,7 @@ client.on("message", message => {
   }
   
   if (command == "nie") {
-    message.member.ban("Dostał wywalony poj");
+    message.member.ban("Dostał wywalony ponieważ nie ma ukończone 13 lat ;(");
   }
   
   if (message.channel.id == "715554804134314034") {
