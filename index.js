@@ -72,7 +72,7 @@ client.on("message", message => {
   } else if (
     message.content.startsWith("Cześć") |
     message.channel.send("Cześć!")
-   { else if (
+    ) else if (
     message.content.startsWith("Cześć") ||
     message.content.startsWith("Cześć!") ||
     message.content.startsWith("Czesc")
