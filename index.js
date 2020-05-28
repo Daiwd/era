@@ -43,7 +43,6 @@ client.on("message", message => {
           const embed = new Discord.RichEmbed()
             .setColor("#FFFF00")
             .setDescription(msg)
-            .setAuthor(client.user.username, client.user.avatarURL);
           member.send(embed);
         }
       });
@@ -95,7 +94,6 @@ client.on("message", message => {
     const embed = new Discord.RichEmbed()
     .setColor("#ffff45")
     .setDescription(wiadomosc)
-    .setAuthor(client.user.username, client.user.avatarURL);
     message.channel.send(embed);
   }
 
