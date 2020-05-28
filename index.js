@@ -59,7 +59,7 @@ client.on("message", message => {
     message.channel.send(
       "**LISTA KOMEND ADMINISTRACJI**\n```" +
         config.prefix +
-        "PW - Wysyła do kązdego na serwerze wiadomość" 
+        "PW - Wysyła do kazdego na serwerze wiadomość"  +
         config.prefix +
         "powiedz - Wysyła wiadomość na danym kanale " +
         config.prefix +
@@ -152,7 +152,8 @@ client.on("message", message => {
       .setColor("#ff4d4d")
       .setAuthor(message.author.username, message.author.avatarURL)
       .setDescription(skarga);
-    message.guild.channels.get("715520630849667114").send(embed);
+    message.guild.channels.get("715520630849667114").send(embed)
+    .then(sentMessage => { sentMessage.react(); sentMessage.react(); })
   }
 });
 client.login(config.token);
