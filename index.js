@@ -69,16 +69,19 @@ client.on("message", (message) => {
     message.channel.send(`${pinged_role.toString()}`);
 }
 
-  if ()
+  if (message.channel.id == "") { //id kanalu do roli
     if (message.guild.roles.find(role => role.name == message.content)) {
-    if (message.channel.id !== "") return;
-    if (message.author.bot) return;
-    if (message.mentions.roles) return;
-    var roleToGive = message.guild.roles.find(role => role.name == message.content);
-    if (roleToGive == message.guild.roles.get()) return;
-    
-    message.member.addRole(roleToGive);
-}
+      if (message.author.bot) return;
+      if (message.mentions.roles) return;
+      var roleToGive = message.guild.roles.find(role => role.name == message.content);
+      var bannedRoles = ["715429731629006869", "715505723555184692", "715429827532029952", "715504036433887315",
+                        "715505013702525010", "715505013702525010", "715504961227587594", "715496397880688650",
+                        "715506095271051306", "715506096537600051", "715506019794681920", "715505905898225725",
+                        "715511561111994378", ""];
+      if (bannedRoles.includes(roleToGive)) return;
+      message.member.addRole(roleToGive);
+    }
+  }
 
 if (command == "sugestia") {
     var suggestion = args.join(" ").toString();
