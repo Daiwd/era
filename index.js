@@ -40,7 +40,7 @@ client.on("message", (message) => {
     //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
     if (message.mentions.users.get(client.user.id) || command === "help" || command === "pomoc") {
         message.channel.send('Cześc! Moje Komendy to:\n```' + config.prefix + 'pw, ' + config.prefix + 'powiedz, ' + config.prefix + 'status```\n**Permisje do używania komend ma tylko: ' 
-                             + client.users.find(user => user.id == 688161946377257002).tag + '!**')
+                             + client.users.find(user => user.id == "688161946377257002").tag + '!**')
     } else if (message.content.startsWith('Cześć') || message.content.startsWith('Cześć!') || message.content.startsWith('Czesc')) {
         message.channel.send("Cześć!");
     }  else if (message.content.startsWith('Hej') || message.content.startsWith('Hej!')) { message.channel.send('Hej!'); }
@@ -77,7 +77,7 @@ client.on("message", (message) => {
       var bannedRoles = ["715429731629006869", "715505723555184692", "715429827532029952", "715504036433887315",
                         "715505013702525010", "715505013702525010", "715504961227587594", "715496397880688650",
                         "715506095271051306", "715506096537600051", "715506019794681920", "715505905898225725",
-                        "715511561111994378", ""];
+                        "715511561111994378", "715511561111994378", "715512267650760765"];
       if (bannedRoles.includes(roleToGive)) return;
       message.member.addRole(roleToGive);
     }
