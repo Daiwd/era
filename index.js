@@ -1,4 +1,4 @@
-715546266033193031//glitch.com
+//glitch.com
 const http = require("http");
 const express = require("express");
 const app = express();
@@ -108,9 +108,9 @@ client.on("message", message => {
 
   if (command == "ping") {
     message.delete(); //usuwanie wiadomości użytkownika
-    var role = message.guild.roles.get("715511386809172038"); //id organizatora eventów
-    var pinged_role = message.guild.roles.get(" "); //rola którą się pinguje
-    if (!message.member.roles.get(role)) return; //jeśli ktoś nie ma roli zdefiniowanej wyżej to cofa
+    var pinged_role = message.guild.roles.get(args[0])
+                   || message.guild.roles.find(r => r.name == args.join().toString()); //rola którą się pinguje
+    if (!message.member.roles.get("715511386809172038")) return; //jeśli ktoś nie ma roli zdefiniowanej wyżej to cofa
     message.channel.send(`${pinged_role.toString()}`); //wysyła ping
   }
 
