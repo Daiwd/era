@@ -88,7 +88,7 @@ client.on("message", message => {
 
   if (command === "powiedz") {
     if (!message.author.id == "688161946377257002")
-      return message.channel.send("Nie masz permisji do użycia tej komendy!"); //poprawiłem trochę kod by było bardziej przejrzyście
+      return message.channel.send("Nie masz permisji do użycia tej komendy!");
     var wiadomosc = args.slice(0).join(" ");
     if (!wiadomosc) return message.reply("Nie napisano żadnej wiadomości");
     const embed = new Discord.RichEmbed()
@@ -108,11 +108,13 @@ client.on("message", message => {
   }
 
   if (command == "ping") {
-    if (!message.member.roles.get("715511386809172038")) return;
+    var rola = message.member.roles.get("715511386809172038");
+    var wiadomosc = args.slice(1).join(" ").toString();
+    if (!rola) return message.reply("Nie posiadasz roli " + rola.toString());
     message.delete(); //usuwanie wiadomości użytkownika
     var pinged_role = message.guild.roles.get(args[0]);
     if (!pinged_role) return;
-    message.channel.send(`${pinged_role.toString()}`); //wysyła ping
+    message.channel.send(`${pinged_role.toString()} - ${wiadomosc}`); //wysyła ping
   }
 
   if (command == "tak") {
