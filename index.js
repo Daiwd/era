@@ -130,12 +130,17 @@ client.on("message", message => {
   }
 
   if (command == "rola-dodaj") {
-    var roleMention = args.slice(1).join(" ").toString();
+    var roleMention = args
+      .slice(1)
+      .join(" ")
+      .toString();
     var role = message.guild.roles.find(r => r.name == roleMention);
     var memberMention = message.mentions.members.first();
     if (!roleMention && !memberMention) return;
-    if (!message.member.roles.get("715942031779692544") 
-        && message.member.roles.get("715942039715446876")) {
+    if (
+      !message.member.roles.get("715942031779692544") &&
+      message.member.roles.get("715942039715446876")
+    ) {
       return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
     /*var bannedRoles = [
@@ -157,10 +162,12 @@ client.on("message", message => {
       "715546266033193031"
     ];
     if (bannedRoles.includes(mention.id)) return;*/
-  memberMention.addRole(role).then(member => {
+    memberMention.addRole(role).then(member => {
       const embed = new Discord.RichEmbed()
-      .setDescription(`Użytkownik ${memberMention.user.tag} otrzymał rolę ${role.name}`)
-      .setColor("#fffff0");
+        .setDescription(
+          `Użytkownik ${memberMention.user.tag} otrzymał rolę ${role.name}`
+        )
+        .setColor("#fffff0");
       message.channel.send(embed);
     });
   }
@@ -193,6 +200,33 @@ client.on("message", message => {
         sentMessage.react("👍");
         sentMessage.react("👎");
       });
+  }
+
+  if (command == "kick") {
+    if (!message.member.roles.get() || !message.member.roles.get()) return;
+    let member = message.mentions.members.first();
+    let powod = args
+      .slice(1)
+      .join(" ")
+      .toString();
+    if (!member || !powod) return;
+    member.kick(powod);
+  }
+  
+  if (command == "ban") {
+    if (!message.member.roles.get() || !message.member.roles.get()) return;
+    let member = message.mentions.members.first();
+    let powod = args
+      .slice(1)
+      .join(" ")
+      .toString();
+    if (!member || !powod) return;
+    member.ban(powod);
+  }
+  
+  if (command == "mute") {
+    let muteRole = message.guild.roles.get() ||
+        
   }
 });
 client.login(config.token);
