@@ -157,9 +157,9 @@ client.on("message", message => {
       "715546266033193031"
     ];
     if (bannedRoles.includes(mention.id)) return;*/
-  memberMention.addRole(roleMention).then(member => {
+  memberMention.addRole(role).then(member => {
       const embed = new Discord.RichEmbed()
-      .setDescription(`Użytkownik ${memberMention.user.tag} otrzymał rolę ${roleMention.name}`)
+      .setDescription(`Użytkownik ${memberMention.user.tag} otrzymał rolę ${role.name}`)
       .setColor("#fffff0");
       message.channel.send(embed);
     });
