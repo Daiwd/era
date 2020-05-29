@@ -109,7 +109,11 @@ client.on("message", message => {
 
   if (command == "ping") {
     var rola = message.member.roles.get("715511386809172038");
-    var wiadomosc = args.slice(1).join(" ").toString();
+    var wiadomosc = args
+      .slice(1)
+      .join(" ")
+      .toString();
+    if (!wiadomosc) return;
     if (!rola) return message.reply("Nie posiadasz roli " + rola.toString());
     message.delete(); //usuwanie wiadomości użytkownika
     var pinged_role = message.guild.roles.get(args[0]);
@@ -125,35 +129,38 @@ client.on("message", message => {
     message.member.ban("Dostał wywalony ponieważ nie ma ukończone 13 lat ;(");
   }
 
-  if (message.channel.id == "715554804134314034") {
-    //id kanalu do roli
-    if (message.guild.roles.find(role => role.name == message.content)) {
-      if (message.author.bot) return;
-      if (message.mentions.roles) return;
-      var roleToGive = message.guild.roles.find(
-        role => role.name == message.content
-      );
-      var bannedRoles = [
-        "715429731629006869",
-        "715505723555184692",
-        "715429827532029952",
-        "715504036433887315",
-        "715505013702525010",
-        "715505013702525010",
-        "715504961227587594",
-        "715496397880688650",
-        "715506095271051306",
-        "715506096537600051",
-        "715506019794681920",
-        "715505905898225725",
-        "715511561111994378",
-        "715511561111994378",
-        "715512267650760765",
-        "715546266033193031"
-      ];
-      if (bannedRoles.includes(roleToGive)) return;
-      message.member.addRole(roleToGive);
+  if (command == "rola-dodaj") {
+    var mention = message.mentions.roles.first();
+    function get(id) {
+      message.member.roles.get(id);
     }
+    if (!mention) return;
+    if (!get("715942031779692544") && !get("715942039715446876")) 
+        return message.reply("Nie posiadasz permisji do użycia tej komendy"); //rola administratora // role moderator starszy moderator i v administrator te jeszcze
+    /*var bannedRoles = [
+      "715429731629006869",
+      "715505723555184692",
+      "715429827532029952",
+      "715504036433887315",
+      "715505013702525010",
+      "715505013702525010",
+      "715504961227587594",
+      "715496397880688650",
+      "715506095271051306",
+      "715506096537600051",
+      "715506019794681920",
+      "715505905898225725",
+      "715511561111994378",
+      "715511561111994378",
+      "715512267650760765",
+      "715546266033193031"
+    ];
+    if (bannedRoles.includes(mention.id)) return;*/
+    message.member.addRole(mention).then(member => {
+      message.channel.send(
+        `Użytkownik ${member.user.tag} otrzymał rolę ${mention.name}`
+      );
+    });
   }
 
   if (command == "propozycja") {
