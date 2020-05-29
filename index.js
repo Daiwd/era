@@ -130,13 +130,14 @@ client.on("message", message => {
   }
 
   if (command == "rola-dodaj") {
-    var mention = message.mentions.roles.first();
-    function get(id) {
-      message.member.roles.get(id);
+    var roleMention = args.slice(1).join(" ").toString();
+    var role = message.guild.roles.find(r => r.name == roleMention);
+    var memberMention = message.mentions.members.first();
+    if (!roleMention && !memberMention) return;
+    if (!message.member.roles.get("715942031779692544") 
+        && message.member.roles.get("715942039715446876")) {
+      return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
-    if (!mention) return;
-    if (!get("715942031779692544") && !get("715942039715446876")) 
-        return message.reply("Nie posiadasz permisji do użycia tej komendy"); //rola administratora // role moderator starszy moderator i v administrator te jeszcze
     /*var bannedRoles = [
       "715429731629006869",
       "715505723555184692",
@@ -156,10 +157,11 @@ client.on("message", message => {
       "715546266033193031"
     ];
     if (bannedRoles.includes(mention.id)) return;*/
-    message.member.addRole(mention).then(member => {
-      message.channel.send(
-        `Użytkownik ${member.user.tag} otrzymał rolę ${mention.name}`
-      );
+  memberMention.addRole(roleMention).then(member => {
+      const embed = new Discord.RichEmbed()
+      .setDescription(`Użytkownik ${memberMention.user.tag} otrzymał rolę ${roleMention.name}`)
+      .setColor("#fffff0");
+      message.channel.send(embed);
     });
   }
 
