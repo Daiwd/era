@@ -100,6 +100,7 @@ client.on("message", message => {
   if (command === "status") {
     if (!message.author.id == "688161946377257002")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
+    message.delete();
     var wiadomosc = args.slice(0).join(" ");
     if (!wiadomosc) return message.channel.send("RONACORD");
     client.user.setActivity(wiadomosc);
@@ -107,10 +108,10 @@ client.on("message", message => {
   }
 
   if (command == "ping") {
+    if (!message.member.roles.get("715511386809172038")) return;
     message.delete(); //usuwanie wiadomości użytkownika
-    var pinged_role = message.guild.roles.get(args[0])
-                   || message.guild.roles.find(r => r.name == args.join().toString()); //rola którą się pinguje
-    if (!message.member.roles.get("715511386809172038")) return; //jeśli ktoś nie ma roli zdefiniowanej wyżej to cofa
+    var pinged_role = message.guild.roles.get(args[0]);
+    if (!pinged_role) return;
     message.channel.send(`${pinged_role.toString()}`); //wysyła ping
   }
 
