@@ -226,7 +226,22 @@ client.on("message", message => {
   
   if (command == "mute") {
     let muteRole = message.guild.roles.get() ||
-        
+        message.guild.roles.find(r => r.name == "MUTED");
+    let powod = args.slice(2).join(" ").toString();
+    let member = message.mentions.members.first() ||
+        message.guild.members.find(m => m.name == args[0]);
+    let cooldown = parseInt(args[1]);
+    if (!muteRole && !powod && !member && cooldown == NaN) return;
+    member.addRole(muteRole)
+    .then(muted => {
+      const embed = new Discord.RichEmbed()
+      .setDescription(`Użytkownik ${muted.tag} został zmutowany za \`${powod}\` na ${cooldown} sekund`)
+      .setColor("#fffff0");
+      message.channel.send(embed);
+      setTimeout(function() {
+        muted.removeRole(muteRole);
+      }, cooldown * 1000);
+    });
   }
 });
 client.login(config.token);
