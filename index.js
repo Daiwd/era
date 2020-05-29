@@ -232,6 +232,7 @@ client.on("message", message => {
         message.guild.members.find(m => m.name == args[0]);
     let cooldown = parseInt(args[1]);
     if (!muteRole && !powod && !member && cooldown == NaN) return;
+    if (member.roles.get(muteRole.id)) return;
     member.addRole(muteRole)
     .then(muted => {
       const embed = new Discord.RichEmbed()
