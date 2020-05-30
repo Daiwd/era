@@ -212,7 +212,7 @@ client.on("message", message => {
     if (!member || !powod) return;
     member.kick(powod);
   }
-  
+
   if (command == "ban") {
     if (!message.member.roles.get() || !message.member.roles.get()) return;
     let member = message.mentions.members.first();
@@ -223,21 +223,27 @@ client.on("message", message => {
     if (!member || !powod) return;
     member.ban(powod);
   }
-  
+
   if (command == "mute") {
-    let muteRole = message.guild.roles.get() ||
-        message.guild.roles.find(r => r.name == "MUTED");
-    let powod = args.slice(2).join(" ").toString();
-    let member = message.mentions.members.first() ||
-        message.guild.members.find(m => m.name == args[0]);
+    let muteRole =
+      message.guild.roles.get("715512265620848681") ||
+      message.guild.roles.find(r => r.name == "MUTED");
+    let powod = args
+      .slice(2)
+      .join(" ")
+      .toString();
+    let member =
+      message.mentions.members.first() ||
+      message.guild.members.find(m => m.name == args[0]);
     let cooldown = parseInt(args[1]);
     if (!muteRole && !powod && !member && cooldown == NaN) return;
     if (member.roles.get(muteRole.id)) return;
-    member.addRole(muteRole)
-    .then(muted => {
+    member.addRole(muteRole).then(muted => {
       const embed = new Discord.RichEmbed()
-      .setDescription(`Użytkownik ${muted.tag} został zmutowany za \`${powod}\` na ${cooldown} sekund`)
-      .setColor("#fffff0");
+        .setDescription(
+          `Użytkownik ${muted.tag} został zmutowany za \`${powod}\` na ${cooldown} sekund`
+        )
+        .setColor("#fffff0");
       message.channel.send(embed);
       setTimeout(function() {
         muted.removeRole(muteRole);
