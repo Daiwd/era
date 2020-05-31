@@ -203,7 +203,7 @@ client.on("message", message => {
   }
 
   if (command == "kick") {
-    if (!message.member.roles.get(config.admID) || !message.member.roles.get(config.admID2)) return;
+    if (!message.member.roles.get(config.admID) && !message.member.roles.get(config.admID2)) return;
     let member = message.mentions.members.first();
     let powod = args
       .slice(1)
@@ -222,7 +222,7 @@ client.on("message", message => {
   }
 
   if (command == "ban") {
-    if (!message.member.roles.get(config.admID) || !message.member.roles.get(config.admID2)) return;
+    if (!message.member.roles.get(config.admID) && !message.member.roles.get(config.admID2)) return;
     let member = message.mentions.members.first();
     let powod = args
       .slice(1)
@@ -241,7 +241,7 @@ client.on("message", message => {
   }
 
   if (command == "mute") {
-    if (!message.member.roles.get(config.admID) || !message.member.roles.get(config.admID2)) return;
+    if (!message.member.roles.get(config.admID) && !message.member.roles.get(config.admID2)) return;
     let muteRole =
       message.guild.roles.get("715512265620848681") ||
       message.guild.roles.find(r => r.name == "MUTED");
