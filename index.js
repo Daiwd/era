@@ -139,7 +139,7 @@ client.on("message", message => {
     if (!roleMention && !memberMention) return;
     if (
       !message.member.roles.get("715942031779692544") &&
-      message.member.roles.get("715942039715446876")
+      !message.member.roles.get("715942039715446876")
     ) {
       return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
