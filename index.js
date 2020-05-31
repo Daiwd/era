@@ -34,7 +34,7 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
-  if (command === "pw") {
+  /*if (command === "pw") {
     //Za to łatwo bana wyłapać :>
     if (message.author.id == "688161946377257002") {
       var msg = args.join(" ").toString();
@@ -54,10 +54,10 @@ client.on("message", message => {
     } else {
       message.channel.send("Nie masz permisji do użycia tej komendy!");
     }
-  }
+  }*/
 
   //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
-  if (
+  /*if (
     message.mentions.users.get(client.user.id) ||
     command === "help" ||
     command === "pomoc"
@@ -84,9 +84,9 @@ client.on("message", message => {
     message.content.startsWith("Hej!")
   ) {
     message.channel.send("Hej!");
-  }
+  }*/
 
-  if (command === "powiedz") {
+  /*if (command === "powiedz") {
     if (!message.author.id == "688161946377257002")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     var wiadomosc = args.slice(0).join(" ");
@@ -95,7 +95,7 @@ client.on("message", message => {
       .setColor("#ffff45")
       .setDescription(wiadomosc);
     message.channel.send(embed);
-  }
+  }*/
 
   if (command === "status") {
     if (!message.author.id == "688161946377257002")
