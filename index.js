@@ -86,7 +86,7 @@ client.on("message", message => {
     message.channel.send("Hej!");
   }*/
 
-  /*if (command === "powiedz") {
+  if (command === "powiedz") {
     if (!message.author.id == "688161946377257002")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     var wiadomosc = args.slice(0).join(" ");
@@ -95,7 +95,7 @@ client.on("message", message => {
       .setColor("#ffff45")
       .setDescription(wiadomosc);
     message.channel.send(embed);
-  }*/
+  }
 
   if (command === "status") {
     if (!message.author.id == "688161946377257002")
@@ -210,14 +210,15 @@ client.on("message", message => {
       .join(" ")
       .toString();
     if (!member || !powod) return;
-    member.kick(powod)
-    .then(kickedMember => {
+    member.kick(powod).then(kickedMember => {
       const embed = new Discord.RichEmbed()
-      .addDescription(`Użytkownik ${member.tag} został wyrzucony przez ${message.author.tag} za: ${powod}`)
-      .setColor()
-      .setTitle("BAN");
+        .addDescription(
+          `Użytkownik ${member.tag} został wyrzucony przez ${message.author.tag} za: ${powod}`
+        )
+        .setColor()
+        .setTitle("BAN");
       message.channel.send(embed);
-    })
+    });
   }
 
   if (command == "ban") {
@@ -228,14 +229,15 @@ client.on("message", message => {
       .join(" ")
       .toString();
     if (!member || !powod) return;
-    member.ban(powod)
-    .then(bannedMember => {
+    member.ban(powod).then(bannedMember => {
       const embed = new Discord.RichEmbed()
-    .addDescription(`Użytkownik ${member.tag} został zbanowany przez ${message.author.tag} za: ${powod}`)
-    .setColor()
-    .setTitle("BAN");
+        .addDescription(
+          `Użytkownik ${member.tag} został zbanowany przez ${message.author.tag} za: ${powod}`
+        )
+        .setColor()
+        .setTitle("BAN");
       message.channel.send(embed);
-    })
+    });
   }
 
   if (command == "mute") {
