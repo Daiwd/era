@@ -167,7 +167,7 @@ client.on("message", message => {
         .setDescription(
           `Użytkownik ${memberMention.user.tag} otrzymał rolę ${role.name}`
         )
-        .setColor("#fffff0");
+        .setColor("#6bff00");
       message.channel.send(embed);
     });
   }
@@ -175,7 +175,7 @@ client.on("message", message => {
   if (command == "propozycja") {
     var suggestion = args.join(" ").toString();
     const embed = new Discord.RichEmbed()
-      .setColor("#00ff00")
+      .setColor("#6bff00")
       .setAuthor(message.author.tag)
       .setDescription(suggestion);
     message.guild.channels
@@ -190,7 +190,7 @@ client.on("message", message => {
   if (command == "skarga") {
     var skarga = args.join(" ").toString();
     const embed = new Discord.RichEmbed()
-      .setColor("#ff4d4d")
+      .setColor("#db8a8a")
       .setAuthor(message.author.tag)
       .setDescription(skarga);
     message.guild.channels
