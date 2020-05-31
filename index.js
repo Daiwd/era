@@ -210,7 +210,14 @@ client.on("message", message => {
       .join(" ")
       .toString();
     if (!member || !powod) return;
-    member.kick(powod);
+    member.kick(powod)
+    .then(kickedMember => {
+      const embed = new Discord.RichEmbed()
+      .addDescription(`Użytkownik ${member.tag} został wyrzucony przez ${message.author.tag} za: ${powod}`)
+      .setColor()
+      .setTitle("BAN");
+      message.channel.send(embed);
+    })
   }
 
   if (command == "ban") {
@@ -221,7 +228,14 @@ client.on("message", message => {
       .join(" ")
       .toString();
     if (!member || !powod) return;
-    member.ban(powod);
+    member.ban(powod)
+    .then(bannedMember => {
+      const embed = new Discord.RichEmbed()
+    .addDescription(`Użytkownik ${member.tag} został zbanowany przez ${message.author.tag} za: ${powod}`)
+    .setColor()
+    .setTitle("BAN");
+      message.channel.send(embed);
+    })
   }
 
   if (command == "mute") {
@@ -241,7 +255,7 @@ client.on("message", message => {
     member.addRole(muteRole).then(muted => {
       const embed = new Discord.RichEmbed()
         .setDescription(
-          `Użytkownik ${muted.tag} został zmutowany za \`${powod}\` na ${cooldown} sekund`
+          `Użytkownik ${muted.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
         )
         .setColor("#fffff0");
       message.channel.send(embed);
