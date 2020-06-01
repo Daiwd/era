@@ -287,6 +287,7 @@ client.on("message", message => {
         )
         .setColor("#fffff0");
       message.channel.send(embed);
+      member.send(embed.setDescription(`Zostałeś zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`));
       setTimeout(function() {
         muted.removeRole(muteRole);
       }, cooldown * 1000);
