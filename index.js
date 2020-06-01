@@ -247,7 +247,7 @@ client.on("message", message => {
       .slice(1)
       .join(" ")
       .toString();
-    console.log(`${member.tag} ${powod}`);
+    console.log(`${member.user.tag} ${powod}`);
     if (member === undefined || !powod) return;
     member.ban(powod).then(bannedMember => {
       console.log("banned");
