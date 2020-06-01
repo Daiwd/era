@@ -236,6 +236,7 @@ client.on("message", message => {
   }
 
   if (command == "ban") {
+    if (!message.content.startsWith(prefix)) return;
     if (
       !message.member.roles.get(config.admID) &&
       !message.member.roles.get(config.admID2)
@@ -261,6 +262,7 @@ client.on("message", message => {
   }
 
   if (command == "mute") {
+    if (!message.content.startsWith(prefix)) return;
     if (
       !message.member.roles.get(config.admID) &&
       !message.member.roles.get(config.admID2)
