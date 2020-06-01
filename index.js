@@ -210,7 +210,7 @@ client.on("message", message => {
       .join(" ")
       .toString();
     console.log(`${member.tag} ${powod}`)
-    if (!member || !powod) return;
+    if (member == undefined || !powod) return;
     member.kick(powod).then(kickedMember => {
       const embed = new Discord.RichEmbed()
         .addDescription(
