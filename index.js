@@ -34,7 +34,6 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
-  if (!command.startsWith(prefix)) return;
   /*if (command === "pw") {
     //Za to łatwo bana wyłapać :>
     if (message.author.id == "688161946377257002") {
@@ -88,6 +87,7 @@ client.on("message", message => {
   }*/
 
   if (command === "powiedz") {
+    if (!message.content.startsWith(prefix)) return;
     if (!message.author.id == "688161946377257002")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     var wiadomosc = args.slice(0).join(" ");
@@ -99,6 +99,7 @@ client.on("message", message => {
   }
 
   if (command === "status") {
+    if (!message.content.startsWith(prefix)) return;
     if (!message.author.id == "688161946377257002")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     message.delete();
@@ -109,6 +110,7 @@ client.on("message", message => {
   }
 
   if (command == "ping") {
+    if (!message.content.startsWith(prefix)) return;
     var rola = message.member.roles.get("715511386809172038");
     var wiadomosc = args
       .slice(1)
@@ -123,14 +125,17 @@ client.on("message", message => {
   }
 
   if (command == "tak") {
+    if (!message.content.startsWith(prefix)) return;
     message.member.addRole("715506096537600051");
   }
 
   if (command == "nie") {
+    if (!message.content.startsWith(prefix)) return;
     message.member.ban("Dostał wywalony ponieważ nie ma ukończone 13 lat ;(");
   }
 
   if (command == "rola-dodaj") {
+    if (!message.content.startsWith(prefix)) return;
     var roleMention = args
       .slice(1)
       .join(" ")
@@ -174,13 +179,14 @@ client.on("message", message => {
   }
 
   if (command == "propozycja") {
+    if (!message.content.startsWith(prefix)) return;
     var suggestion = args.join(" ").toString();
     const embed = new Discord.RichEmbed()
       .setColor("#6bff00")
       .setAuthor(message.author.tag)
       .setDescription(suggestion);
     message.guild.channels
-      .get("715520608502546463")
+      .get("716573614979416115")
       .send(embed)
       .then(sentMessage => {
         sentMessage.react("👍");
@@ -189,13 +195,14 @@ client.on("message", message => {
   }
 
   if (command == "skarga") {
+    if (!message.content.startsWith(prefix)) return;
     var skarga = args.join(" ").toString();
     const embed = new Discord.RichEmbed()
       .setColor("#db8a8a")
       .setAuthor(message.author.tag)
       .setDescription(skarga);
     message.guild.channels
-      .get("715520630849667114")
+      .get("716573614979416115")
       .send(embed)
       .then(sentMessage => {
         sentMessage.react("👍");
@@ -204,15 +211,20 @@ client.on("message", message => {
   }
 
   if (command == "kick") {
-    if (!message.member.roles.get(config.admID) && !message.member.roles.get(config.admID2)) return;
+    if (!message.content.startsWith(prefix)) return;
+    if ( !message.member.roles.get(config.admID) &&
+      !message.member.roles.get(config.admID2)
+    )
+      return;
     let member = message.mentions.members.first();
     let powod = args
       .slice(1)
       .join(" ")
       .toString();
-    console.log(`${member.tag} ${powod}`)
+    console.log(`${member.tag} ${powod}`);
     if (member == undefined || !powod) return;
     member.kick(powod).then(kickedMember => {
+      console.log("kicked");
       const embed = new Discord.RichEmbed()
         .setDescription(
           `Użytkownik ${member.tag} został wyrzucony przez ${message.author.tag} za: ${powod}`
@@ -224,7 +236,11 @@ client.on("message", message => {
   }
 
   if (command == "ban") {
-    if (!message.member.roles.get(config.admID) && !message.member.roles.get(config.admID2)) return;
+    if (
+      !message.member.roles.get(config.admID) &&
+      !message.member.roles.get(config.admID2)
+    )
+      return;
     let member = message.mentions.members.first();
     let powod = args
       .slice(1)
@@ -233,6 +249,7 @@ client.on("message", message => {
     console.log(`${member.tag} ${powod}`);
     if (member === undefined || !powod) return;
     member.ban(powod).then(bannedMember => {
+      console.log("banned");
       const embed = new Discord.RichEmbed()
         .setDescription(
           `Użytkownik ${member.tag} został zbanowany przez ${message.author.tag} za: ${powod}`
@@ -244,17 +261,24 @@ client.on("message", message => {
   }
 
   if (command == "mute") {
-    if (!message.member.roles.get(config.admID) && !message.member.roles.get(config.admID2)) return console.log("nie działa");
-    let muteRole = message.guild.roles.get("715512265620848681") || message.guild.roles.find(r => r.name === "MUTED");
+    if (
+      !message.member.roles.get(config.admID) &&
+      !message.member.roles.get(config.admID2)
+    )
+      return console.log("nie działa");
+    let muteRole = message.guild.roles.get("715512265620848681");
     let powod = args
       .slice(2)
       .join(" ")
       .toString();
-    let member = message.mentions.members.first() || message.guild.members.find(m => m.name == args[0]);
+    let member = message.mentions.members.first();
     let cooldown = parseInt(args[1]);
-    console.log(muteRole.name + " " + powod + " " + member.tag + " " + cooldown);
+    console.log(
+      muteRole.name + " " + powod + " " + member.user.tag + " " + cooldown
+    );
     if (member.roles.get(muteRole.id)) return;
     member.addRole(muteRole.id).then(muted => {
+      console.log("muted");
       const embed = new Discord.RichEmbed()
         .setDescription(
           `Użytkownik ${muted.user.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
