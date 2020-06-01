@@ -213,7 +213,7 @@ client.on("message", message => {
     if (member == undefined || !powod) return;
     member.kick(powod).then(kickedMember => {
       const embed = new Discord.RichEmbed()
-        .addDescription(
+        .setDescription(
           `Użytkownik ${member.tag} został wyrzucony przez ${message.author.tag} za: ${powod}`
         )
         .setColor()
@@ -230,34 +230,29 @@ client.on("message", message => {
       .join(" ")
       .toString();
     console.log(`${member.tag} ${powod}`);
-    if (!member || !powod) return;
-    /*
+    if (member === undefined || !powod) return;
     member.ban(powod).then(bannedMember => {
       const embed = new Discord.RichEmbed()
-        .addDescription(
+        .setDescription(
           `Użytkownik ${member.tag} został zbanowany przez ${message.author.tag} za: ${powod}`
         )
         .setColor()
         .setTitle("BAN");
       message.channel.send(embed);
-    });*/
+    });
   }
 
   if (command == "mute") {
     if (!message.member.roles.get(config.admID) && !message.member.roles.get(config.admID2)) return console.log("nie działa");
-    let muteRole =
-      message.guild.roles.get("715512265620848681") ||
-      message.guild.roles.find(r => r.name == "MUTED");
+    let muteRole = message.guild.roles.get("715512265620848681") || message.guild.roles.find(r => r.name === "MUTED");
     let powod = args
       .slice(2)
       .join(" ")
       .toString();
-    let member =
-      message.mentions.members.first() ||
-      message.guild.members.find(m => m.name == args[0]);
+    let member = message.mentions.members.first() || message.guild.members.find(m => m.name == args[0]);
     let cooldown = parseInt(args[1]);
     console.log(muteRole.name + " " + powod + " " + member.tag + " " + cooldown);
-    /*if (member.roles.get(muteRole.id)) return;
+    if (member.roles.get(muteRole.id)) return;
     member.addRole(muteRole).then(muted => {
       const embed = new Discord.RichEmbed()
         .setDescription(
@@ -268,7 +263,7 @@ client.on("message", message => {
       setTimeout(function() {
         muted.removeRole(muteRole);
       }, cooldown * 1000);
-    });*/
+    });
   }
 });
 client.login(config.token);
