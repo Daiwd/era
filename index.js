@@ -34,6 +34,7 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
+  if (!command.startsWith(prefix)) return;
   /*if (command === "pw") {
     //Za to łatwo bana wyłapać :>
     if (message.author.id == "688161946377257002") {
@@ -253,10 +254,10 @@ client.on("message", message => {
     let cooldown = parseInt(args[1]);
     console.log(muteRole.name + " " + powod + " " + member.tag + " " + cooldown);
     if (member.roles.get(muteRole.id)) return;
-    member.addRole(muteRole).then(muted => {
+    member.addRole(muteRole.id).then(muted => {
       const embed = new Discord.RichEmbed()
         .setDescription(
-          `Użytkownik ${muted.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
+          `Użytkownik ${muted.user.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
         )
         .setColor("#fffff0");
       message.channel.send(embed);
