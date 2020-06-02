@@ -212,7 +212,8 @@ client.on("message", message => {
 
   if (command == "kick") {
     if (!message.content.startsWith(prefix)) return;
-    if ( !message.member.roles.get(config.admID) &&
+    if (
+      !message.member.roles.get(config.admID) &&
       !message.member.roles.get(config.admID2)
     )
       return;
@@ -287,8 +288,13 @@ client.on("message", message => {
         )
         .setColor("#fffff0");
       message.channel.send(embed);
-      member.send(embed.setDescription(`Zostałeś zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`)
-                 .setFooter(member.user.avatarURL));
+      member.send(
+        embed
+          .setDescription(
+            `Zostałeś zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
+          )
+          .setFooter(member.user.avatarURL)
+      );
       setTimeout(function() {
         muted.removeRole(muteRole);
       }, cooldown * 1000);
