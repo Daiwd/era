@@ -73,6 +73,7 @@ client.on("message", message => {
         client.users.find(user => user.id == "688161946377257002").tag +
         "!**"
     );if
+    ):
   } else if (
     message.content.startsWith("Cześć") ||
     message.content.startsWith("Cześć!") ||
