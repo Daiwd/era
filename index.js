@@ -133,6 +133,7 @@ client.on("message", message => {
   if (command == "nie") {
     if (!message.content.startsWith(prefix)) return;
     message.member.ban("Dostał wywalony ponieważ nie ma ukończone 13 lat ;(");
+    message.delete();
   }
 
   if (command == "rola-dodaj") {
