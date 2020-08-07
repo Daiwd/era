@@ -35,7 +35,7 @@ client.on("message", message => {
   const command = args.shift().toLowerCase();
   if (command === "powiedz") {
     if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "688161946377257002")
+    if (!message.author.id == "735201542554124340")
       return message.channel.send("Oj Oj nie możesz użyć komendy");
     var wiadomosc = args.slice(0).join(" ");
     if (!wiadomosc) return message.reply("Wpisz jaką wiadomość mam wysłać");
@@ -128,7 +128,7 @@ client.on("message", message => {
   }
 
   // serwerinfo
-  if (message.content === "&serverinfo") {
+  if (message.content === "serverinfo") {
     const embed = new Discord.RichEmbed()
       .setDescription(
         "Właściciel - Łukanio#9515" +
@@ -148,7 +148,7 @@ client.on("message", message => {
     message.channel.send(embed);
   }
 
-  if (message.content == "akceptuje netflix polska") {
+  if (message.content == "5567765") {
     message.member.addRole("720687227742584933");
     let channel = message.guild.channels.find(ch => ch.name === config.channelName);
     let channel2 = message.guild.channels.find(ch => ch.name === config.channelName2);
