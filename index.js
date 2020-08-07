@@ -34,7 +34,7 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
-   /if(command === "pw") {
+   /*if(command === "pw") {
     //Za to łatwo bana wyłapać :>
     if (message.author.id == "688161946377257002") {
       var msg = args.join(" ").toString();
@@ -72,7 +72,7 @@ client.on("message", message => {
         "status```\n**ADMINISTRACJA MOŻE TYLKO UŻYWAĆ!" +
         client.users.find(user => user.id == "688161946377257002").tag +
         "!**"
-    );
+    );if
   } else if (
     message.content.startsWith("Cześć") ||
     message.content.startsWith("Cześć!") ||
