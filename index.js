@@ -188,7 +188,7 @@ client.on("message", message => {
       .setAuthor(message.author.tag)
       .setDescription(suggestion);
     message.guild.channels
-      .get("740741579987222708")
+      .get("741265581809991701")
       .send(embed)
       .then(sentMessage => {
         sentMessage.react("👍");
@@ -204,7 +204,7 @@ client.on("message", message => {
       .setAuthor(message.author.tag)
       .setDescription(skarga);
     message.guild.channels
-      .get("740741579987222708")
+      .get("741265581809991701")
       .send(embed)
       .then(sentMessage => {
         sentMessage.react("👍");
@@ -270,7 +270,7 @@ client.on("message", message => {
       !message.member.roles.get(config.admID2)
     )
       return console.log("nie działa");
-    let muteRole = message.guild.roles.get("715512265620848681");
+    let muteRole = message.guild.roles.get("741266666251616277");
     let powod = args
       .slice(2)
       .join(" ")
