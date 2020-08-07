@@ -236,65 +236,53 @@ client.on("message", message => {
       message.channel.send(embed);
     });
   }
+  // Ignore messages that aren't from a guild
+  if (!message.guild) return;
 
-  if (command == "ban") {
-    if (!message.content.startsWith(prefix)) return;
-    if (
-      !message.member.roles.get(config.admID) &&
-      !message.member.roles.get(config.admID2)
-    )
-      return;
-    let member = message.mentions.members.first();
-    let powod = args
-      .slice(1)
-      .join(" ")
-      .toString();
-    console.log(`${member.user.tag} ${powod}`);
-    if (member === undefined || !powod) return;
-    member.ban(powod).then(bannedMember => {
-      console.log("banned");
-      const embed = new Discord.RichEmbed()
-        .setDescription(
-          `Użytkownik ${member.tag} został zbanowany przez ${message.author.tag} za: ${powod}`
-        )
-        .setColor()
-        .setTitle("BAN");
-      message.channel.send(embed);
-    });
-  }
-
-  if (command == "mute") {
-    if (!message.content.startsWith(prefix)) return;
-    if (
-      !message.member.roles.get(config.admID) &&
-      !message.member.roles.get(config.admID2)
-    )
-      return console.log("nie działa");
-    let muteRole = message.guild.roles.get("741266666251616277");
-    let powod = args
-      .slice(2)
-      .join(" ")
-      .toString();
-    let member = message.mentions.members.first();
-    let cooldown = parseInt(args[1]);
-    console.log(
-      muteRole.name + " " + powod + " " + member.user.tag + " " + cooldown
-    );
-    if (member.roles.get(muteRole.id)) return;
-    member.addRole(muteRole.id).then(muted => {
-      console.log("muted");
-      const embed = new Discord.RichEmbed()
-        .setDescription(
-          `Użytkownik ${muted.user.tag} został wyciszony przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
-        )
-        .setColor("#fffff0");
-      message.channel.send(embed);
-      member.send(embed.setDescription(`Zostałeś wyciszony przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`)
-                 .setFooter(member.user.avatarURL));
-      setTimeout(function() {
-        muted.removeRole(muteRole);
-      }, cooldown * 1000);
-    });
+  // if the message content starts with "!ban"
+  if (message.content.startsWith('ban')) {
+    // Assuming we mention someone in the message, this will return the user
+    // Read more about mentions over at https://discord.js.org/#/docs/main/master/class/MessageMentions
+    const user = message.mentions.users.first();
+    // If we have a user mentioned
+    if (user) {
+      // Now we get the member from the user
+      const member = message.guild.member(user);
+      // If the member is in the guild
+      if (member) {
+        /**
+         * Ban the member
+         * Make sure you run this on a member, not a user!
+         * There are big differences between a user and a member
+         * Read more about what ban options there are over at
+         * https://discord.js.org/#/docs/main/master/class/GuildMember?scrollTo=ban
+         */
+        member
+          .ban({
+            reason: 'They were bad!',
+          })
+          .then(() => {
+            // We let the message author know we were able to ban the person
+            message.reply(`Successfully banned ${user.tag}`);
+          })
+          .catch(err => {
+            // An error happened
+            // This is generally due to the bot not being able to ban the member,
+            // either due to missing permissions or role hierarchy
+            message.reply('I was unable to ban the member');
+            // Log the error
+            console.error(err);
+          });
+      } else {
+        // The mentioned user isn't in this guild
+        message.reply("That user isn't in this guild!");
+      }
+    } else {
+      // Otherwise, if no user was mentioned
+      message.reply("You didn't mention the user to ban!");
+    }
   }
 });
-client.login(config.token);
+
+// Log our bot in using the token from https://discordapp.com/developers/applications/me
+client.login('your token here');
