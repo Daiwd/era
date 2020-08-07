@@ -25,7 +25,6 @@ client.on("ready", () => {
     } użytkownikach!`
   );
 });
-
 client.on("message", message => {
   if (message.author.bot) return;
   const prefix = config.prefix;
@@ -34,214 +33,37 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
-  /*if(command === "pw") {
-    //Za to łatwo bana wyłapać :>
-    if (message.author.id == "688161946377257002") {
-      var msg = args.join(" ").toString();
-      message.guild.members.forEach(member => {
-        if (member.id != client.user.id && !member.user.bot) {
-          const embed = new Discord.RichEmbed()
-            .setColor("#FFFF00")
-            .setDescription(msg);
-          member.send(embed);
-        }
-      });
-      message.channel.send(
-        `Wysłano podaną wiadomość do ${
-          client.users.filter(user => !user.bot).size
-        } użytkowników`
-      ); //nie polecam używać na kanale głównym bo przyps, w dodatku kto by chciał coś wysyłać każdemu użytkownikowi na serwerze
-    } else {
-      message.channel.send("Nie masz permisji do użycia tej komendy!");
-    }
-  }*/
-
-  //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
-  /*if (
-    message.mentions.users.get(client.user.id) ||
-    command === "help" ||
-    command === "pomoc"
-  ) {
-    message.channel.send(
-      "**LISTA KOMEND ADMINISTRACJI**\n```" +
-        config.prefix +
-        "PW - Wysyła do kazdego na serwerze wiadomość" +
-        config.prefix +
-        "powiedz - Wysyła wiadomość na danym kanale " +
-        config.prefix +
-        "status```\n**ADMINISTRACJA MOŻE TYLKO UŻYWAĆ!" +
-        client.users.find(user => user.id == "688161946377257002").tag +
-        "!**"
-    );if
-    ):
-  } else if (
-    message.content.startsWith("Cześć") ||
-    message.content.startsWith("Cześć!") ||
-    message.content.startsWith("Czesc")
-  ) {
-    message.channel.send("Cześć!");
-  } else if (
-    message.content.startsWith("Hej") ||
-    message.content.startsWith("Hej!")
-  ) {
-    message.channel.send("Hej!");
-  }
-*/
   if (command === "powiedz") {
     if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "380427062390947852")
-      return message.channel.send("Nie masz permisji do użycia tej komendy!");
+    if (!message.author.id == "688161946377257002")
+      return message.channel.send("Oj Oj nie możesz użyć komendy");
     var wiadomosc = args.slice(0).join(" ");
-    if (!wiadomosc) return message.reply("Nie napisano żadnej wiadomości");
+    if (!wiadomosc) return message.reply("Wpisz jaką wiadomość mam wysłać");
     const embed = new Discord.RichEmbed()
-      .setColor("#ffff45")
+      .setColor("#25c059")
       .setDescription(wiadomosc);
     message.channel.send(embed);
   }
-
-  if (command === "status") {
-    if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "380427062390947852")
-      return message.channel.send("Nie masz permisji do użycia tej komendy!");
-    message.delete();
-    var wiadomosc = args.slice(0).join(" ");
-    if (!wiadomosc) return message.channel.send("RONACORD");
-    client.user.setActivity(wiadomosc);
-    message.channel.send("Ustawiono");
-  }
-
-  if (command == "ping") {
-    if (!message.content.startsWith(prefix)) return;
-    var rola = message.member.roles.get("715511386809172038");
-    var wiadomosc = args
-      .slice(1)
-      .join(" ")
-      .toString();
-    if (!wiadomosc) return;
-    if (!rola) return message.reply("Nie posiadasz roli " + rola.toString());
-    message.delete(); //usuwanie wiadomości użytkownika
-    var pinged_role = message.guild.roles.get(args[0]);
-    if (!pinged_role) return;
-    message.channel.send(`${pinged_role.toString()} - ${wiadomosc}`); //wysyła ping
-  }
-
-  if (command == "tak") {
-    if (!message.content.startsWith(prefix)) return;
-    message.member.addRole("715506096537600051");
-  }
-
-  if (command == "nie") {
-    if (!message.content.startsWith(prefix)) return;
-    message.member.ban("Dostał wywalony ponieważ nie ma ukończone 13 lat ;(");
-    message.delete();
-  }
-
-  if (command == "rola-dodaj") {
-    if (!message.content.startsWith(prefix)) return;
-    var roleMention = args
-      .slice(1)
-      .join(" ")
-      .toString();
-    var role = message.guild.roles.find(r => r.name == roleMention);
-    var memberMention = message.mentions.members.first();
-    if (!roleMention && !memberMention) return;
-    if (
-      !message.member.roles.get("741061603876798644") &&
-      !message.member.roles.get("741024624657039381")
-    ) {
-      return message.reply("Nie posiadasz permisji do użycia tej komendy");
-    }
-    /* var bannedRoles = [
-      "715429731629006869",
-      "715505723555184692",
-      "715429827532029952",
-      "715504036433887315",
-      "715505013702525010",
-      "715505013702525010",
-      "715504961227587594",
-      "715496397880688650",
-      "715506095271051306",
-      "715506096537600051",
-      "715506019794681920",
-      "715505905898225725",
-      "715511561111994378",
-      "715511561111994378",
-      "715512267650760765",
-      "715546266033193031"
-    ];
-    if (bannedRoles.includes(mention.id)) return;*/
-    memberMention.addRole(role).then(member => {
-      const embed = new Discord.RichEmbed()
-        .setDescription(
-          `Użytkownik ${memberMention.user.tag} otrzymał rolę ${role.name}`
-        )
-        .setColor("#6bff00");
-      message.channel.send(embed);
-    });
-  }
-
-  if (command == "propozycja") {
-    if (!message.content.startsWith(prefix)) return;
-    var suggestion = args.join(" ").toString();
-    const embed = new Discord.RichEmbed()
-      .setColor("#6bff00")
-      .setAuthor(message.author.tag)
-      .setDescription(suggestion);
-    message.guild.channels
-      .get("741265581809991701")
-      .send(embed)
-      .then(sentMessage => {
-        sentMessage.react("👍");
-        sentMessage.react("👎");
-      });
-  }
-
-  if (command == "skarga") {
-    if (!message.content.startsWith(prefix)) return;
-    var skarga = args.join(" ").toString();
-    const embed = new Discord.RichEmbed()
-      .setColor("#db8a8a")
-      .setAuthor(message.author.tag)
-      .setDescription(skarga);
-    message.guild.channels
-      .get("741265581809991701")
-      .send(embed)
-      .then(sentMessage => {
-        sentMessage.react("👍");
-        sentMessage.react("👎");
-      });
-  }
-
-  if (command == "kick") {
-    if (!message.content.startsWith(prefix)) return;
-    if (
-      !message.member.roles.get(config.admID) &&
-      !message.member.roles.get(config.admID2)
-    )
-      return;
-    let member = message.mentions.members.first();
-    let powod = args
-      .slice(1)
-      .join(" ")
-      .toString();
-    console.log(`${member.tag} ${powod}`);
-    if (member == undefined || !powod) return;
-    member.kick(powod).then(kickedMember => {
-      console.log("kicked");
-      const embed = new Discord.RichEmbed()
-        .setDescription(
-          `Użytkownik ${member.tag} został wyrzucony przez ${message.author.tag} za: ${powod}`
-        )
-        .setColor()
-        .setTitle("BAN");
-      message.channel.send(embed);
-    });
-  }
+});
+// Create an event listener for new guild members
+client.on("guildMemberAdd", member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find(
+    ch => ch.id === "720686891766120551"
+  );
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  const embedPowitalny = new Discord.RichEmbed().setDescription(
+    "Witaj na serwerze zachęcamy do weryfikacji i dodanie sobie ról na #dodaj-role oraz przedstawienia się na #przedstaw-sie oraz napisanie na czacie głównym"
+  );
+  channel.send(`Hej ${member.toString()}`, { embed: embedPowitalny });
+});
+client.on("message", message => {
   // Ignore messages that aren't from a guild
   if (!message.guild) return;
-
-  // if the message content starts with "!ban"
-  if (message.content.startsWith("ban")) {
+  // If the message content starts with "!kick"
+  if (message.content.startsWith("&kick")) {
     // Assuming we mention someone in the message, this will return the user
     // Read more about mentions over at https://discord.js.org/#/docs/main/master/class/MessageMentions
     const user = message.mentions.users.first();
@@ -252,38 +74,145 @@ client.on("message", message => {
       // If the member is in the guild
       if (member) {
         /**
-         * Ban the member
+         * Kick the member
          * Make sure you run this on a member, not a user!
          * There are big differences between a user and a member
-         * Read more about what ban options there are over at
-         * https://discord.js.org/#/docs/main/master/class/GuildMember?scrollTo=ban
          */
         member
-          .ban({
-            reason: "They were bad!"
-          })
+          .kick("Optional reason that will display in the audit logs")
           .then(() => {
-            // We let the message author know we were able to ban the person
-            message.reply(`Successfully banned ${user.tag}`);
+            // We let the message author know we were able to kick the person
+            message.reply(`Użytkownik został pomyślnie wyrzucony :)`);
           })
           .catch(err => {
             // An error happened
-            // This is generally due to the bot not being able to ban the member,
+            // This is generally due to the bot not being able to kick the member,
             // either due to missing permissions or role hierarchy
-            message.reply("I was unable to ban the member");
+            message.reply("I was unable to kick the member");
             // Log the error
             console.error(err);
           });
       } else {
         // The mentioned user isn't in this guild
-        message.reply("That user isn't in this guild!");
+        message.reply("Złe argumenty!");
       }
-    } else {
       // Otherwise, if no user was mentioned
-      message.reply("You didn't mention the user to ban!");
+    } else {
+      message.reply("Złe argumenty!");
     }
   }
 });
+// Create an event listener for messages
+client.on("message", message => {
+  // If the message is "ping"
+  if (message.content === "siema") {
+    // Send "pong" to the same channel
+    message.channel.send("");
+  }
+});
+// Create an event listener for messages
+client.on("message", message => {
+  // If the message is "ping"
+  if (message.content === "hej") {
+    // Send "pong" to the same channel
+    message.channel.send("Hejka naklejka");
+  }
+});
 
-// Log our bot in using the token from https://discordapp.com/developers/applications/me
-client.login("your token here");
+// Create an event listener for messages
+client.on("message", message => {
+  // If the message is "ping"
+  if (message.content === "pomoc") {
+    // Send "pong" to the same channel
+    message.channel.send("Pisz w tej sprawie do Łukanio#9515!");
+  }
+
+  // serwerinfo
+  if (message.content === "&serverinfo") {
+    const embed = new Discord.RichEmbed()
+      .setDescription(
+        "Właściciel - Łukanio#9515" +
+          "\n" +
+          "Serwer Został stworzony - 02.06.2020" +
+          "\n" +
+          `Użytkowników jest: ${message.guild.members.size}` +
+          "\n" +
+          "Testowe: 0" +
+          "\n" +
+          "Głosowe: 0" +
+          "\n" +
+          "Region serwera - Europa"
+      )
+      .setTitle("Informacje o serwerze Komsndas")
+      .setColor("#00ffa7");
+    message.channel.send(embed);
+  }
+
+  if (message.content == "akceptuje netflix polska") {
+    message.member.addRole("720687227742584933");
+    let channel = message.guild.channels.find(ch => ch.name === config.channelName);
+    let channel2 = message.guild.channels.find(ch => ch.name === config.channelName2);
+    if (channel == null || channel2 == null) {
+      message.delete()
+      return;
+    } else {
+      const embedPowitalny = new Discord.RichEmbed()
+      .setDescription("Zostałeś zweryfikowany!")
+      .setColor("#ff00ff");
+      channel.send({embed: embedPowitalny});
+      channel2.send({embed: embedPowitalny});
+    }
+  }
+
+  if (message.content == "nie") {
+    message.member.ban("Dostał wywalony ponieważ nie ma ukończone 13 lat");
+  }
+});
+
+// Weryfikacja
+client.on("guildMemberAdd", member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find(
+    ch => ch.id === "741282523815870534"
+  );
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(` ${member} Witaj na serwerze `);
+});
+// Create an event listener for new guild members
+client.on("guildMemberRemove", member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find(
+    ch => ch.id === "741282186350690385"
+  );
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(` ${member.user.tag} nas opuścił/a, jaka szkoda `);
+});
+
+// Logi
+client.on("guildMemberAdd", member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find(
+    ch => ch.id === ("9741282186350690385")
+  );
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(` ${member.user.tag} Wbił na serwer ${member.guild.name}`);
+});
+// Logi
+client.on("guildMemberRemove", member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find(
+    ch => ch.id === "741282523815870534"
+  );
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(` ${member.user.tag} wyszedł z serwera`);
+});
+const embed = new Discord.RichEmbed();
+client.login(config.token);
