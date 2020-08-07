@@ -34,7 +34,7 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
-  /*if (command === "pw") {
+   / *f(command === "pw") {
     //Za to łatwo bana wyłapać :>
     if (message.author.id == "688161946377257002") {
       var msg = args.join(" ").toString();
