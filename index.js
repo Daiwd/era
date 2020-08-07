@@ -89,7 +89,7 @@ client.on("message", message => {
 */
   if (command === "powiedz") {
     if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "688161946377257002")
+    if (!message.author.id == "380427062390947852")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     var wiadomosc = args.slice(0).join(" ");
     if (!wiadomosc) return message.reply("Nie napisano żadnej wiadomości");
@@ -101,7 +101,7 @@ client.on("message", message => {
 
   if (command === "status") {
     if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "688161946377257002")
+    if (!message.author.id == "380427062390947852")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     message.delete();
     var wiadomosc = args.slice(0).join(" ");
@@ -146,8 +146,8 @@ client.on("message", message => {
     var memberMention = message.mentions.members.first();
     if (!roleMention && !memberMention) return;
     if (
-      !message.member.roles.get("715942031779692544") &&
-      !message.member.roles.get("715942039715446876")
+      !message.member.roles.get("741061603876798644") &&
+      !message.member.roles.get("741024624657039381")
     ) {
       return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
@@ -188,7 +188,7 @@ client.on("message", message => {
       .setAuthor(message.author.tag)
       .setDescription(suggestion);
     message.guild.channels
-      .get("716573614979416115")
+      .get("740741579987222708")
       .send(embed)
       .then(sentMessage => {
         sentMessage.react("👍");
@@ -204,7 +204,7 @@ client.on("message", message => {
       .setAuthor(message.author.tag)
       .setDescription(skarga);
     message.guild.channels
-      .get("716573614979416115")
+      .get("740741579987222708")
       .send(embed)
       .then(sentMessage => {
         sentMessage.react("👍");
