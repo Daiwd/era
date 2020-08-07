@@ -263,7 +263,7 @@ client.on("message", message => {
     });
   }
 
-  if (command == "mute") {
+  if (command == "wycisz") {
     if (!message.content.startsWith(prefix)) return;
     if (
       !message.member.roles.get(config.admID) &&
