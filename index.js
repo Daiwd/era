@@ -151,7 +151,7 @@ client.on("message", message => {
     ) {
       return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
-    /*var bannedRoles = [
+   /* var bannedRoles = [
       "715429731629006869",
       "715505723555184692",
       "715429827532029952",
