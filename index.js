@@ -34,7 +34,7 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
-   / *if(command === "pw") {
+   /if(command === "pw") {
     //Za to łatwo bana wyłapać :>
     if (message.author.id == "688161946377257002") {
       var msg = args.join(" ").toString();
@@ -84,7 +84,7 @@ client.on("message", message => {
     message.content.startsWith("Hej!")
   ) {
     message.channel.send("Hej!");
-  }*/
+  }
 
   if (command === "powiedz") {
     if (!message.content.startsWith(prefix)) return;
