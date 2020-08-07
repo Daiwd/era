@@ -86,7 +86,7 @@ client.on("message", message => {
   ) {
     message.channel.send("Hej!");
   }
-
+*/
   if (command === "powiedz") {
     if (!message.content.startsWith(prefix)) return;
     if (!message.author.id == "688161946377257002")
