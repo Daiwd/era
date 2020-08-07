@@ -34,7 +34,7 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
-   /*if(command === "pw") {
+  /*if(command === "pw") {
     //Za to łatwo bana wyłapać :>
     if (message.author.id == "688161946377257002") {
       var msg = args.join(" ").toString();
@@ -151,7 +151,7 @@ client.on("message", message => {
     ) {
       return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
-   /* var bannedRoles = [
+    /* var bannedRoles = [
       "715429731629006869",
       "715505723555184692",
       "715429827532029952",
@@ -214,7 +214,8 @@ client.on("message", message => {
 
   if (command == "kick") {
     if (!message.content.startsWith(prefix)) return;
-    if ( !message.member.roles.get(config.admID) &&
+    if (
+      !message.member.roles.get(config.admID) &&
       !message.member.roles.get(config.admID2)
     )
       return;
@@ -240,7 +241,7 @@ client.on("message", message => {
   if (!message.guild) return;
 
   // if the message content starts with "!ban"
-  if (message.content.startsWith('ban')) {
+  if (message.content.startsWith("ban")) {
     // Assuming we mention someone in the message, this will return the user
     // Read more about mentions over at https://discord.js.org/#/docs/main/master/class/MessageMentions
     const user = message.mentions.users.first();
@@ -259,7 +260,7 @@ client.on("message", message => {
          */
         member
           .ban({
-            reason: 'They were bad!',
+            reason: "They were bad!"
           })
           .then(() => {
             // We let the message author know we were able to ban the person
@@ -269,7 +270,7 @@ client.on("message", message => {
             // An error happened
             // This is generally due to the bot not being able to ban the member,
             // either due to missing permissions or role hierarchy
-            message.reply('I was unable to ban the member');
+            message.reply("I was unable to ban the member");
             // Log the error
             console.error(err);
           });
@@ -285,4 +286,4 @@ client.on("message", message => {
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
-client.login('your token here');
+client.login("your token here");
