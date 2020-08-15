@@ -150,17 +150,21 @@ client.on("message", message => {
 
   if (message.content == "akceptuje netflix polska") {
     message.member.addRole("720687227742584933");
-    let channel = message.guild.channels.find(ch => ch.name === config.channelName);
-    let channel2 = message.guild.channels.find(ch => ch.name === config.channelName2);
+    let channel = message.guild.channels.find(
+      ch => ch.name === config.channelName
+    );
+    let channel2 = message.guild.channels.find(
+      ch => ch.name === config.channelName2
+    );
     if (channel == null || channel2 == null) {
-      message.delete()
+      message.delete();
       return;
     } else {
       const embedPowitalny = new Discord.RichEmbed()
-      .setDescription("Zostałeś zweryfikowany!")
-      .setColor("#ff00ff");
-      channel.send({embed: embedPowitalny});
-      channel2.send({embed: embedPowitalny});
+        .setDescription("Zostałeś zweryfikowany!")
+        .setColor("#ff00ff");
+      channel.send({ embed: embedPowitalny });
+      channel2.send({ embed: embedPowitalny });
     }
   }
 
