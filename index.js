@@ -177,20 +177,7 @@ client.on("message", message => {
       message.channel.send(embed);
     });
   }
- if (command == "unmute") {
-     if (!message.content.startsWith(prefix)) return;
-    var roleMention = args
-      .slice(1)
-      .join(" ")
-      .toString();
-    var role = message.guild.roles.find(r => r.name == roleMention);
-    var memberMention = message.mentions.members.first();
-    if (!roleMention && !memberMention) return;
-    if (
-      !message.member.roles.remove("744960306475958424")
-    ) {
-      return message.reply("Nie posiadasz permisji do użycia tej komendy");
-    }
+
   if (command == "propozycja") {
     if (!message.content.startsWith(prefix)) return;
     var suggestion = args.join(" ").toString();
@@ -313,6 +300,5 @@ client.on("message", message => {
       }, cooldown * 1000);
     });
   }
-}); 
-  
+});
 client.login(config.token);
