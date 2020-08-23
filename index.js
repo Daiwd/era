@@ -88,7 +88,7 @@ client.on("message", message => {
 
   if (command === "powiedz") {
     if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "688161946377257002")
+    if (!message.author.id == "380427062390947852")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     var wiadomosc = args.slice(0).join(" ");
     if (!wiadomosc) return message.reply("Nie napisano żadnej wiadomości");
@@ -100,7 +100,7 @@ client.on("message", message => {
 
   if (command === "status") {
     if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "688161946377257002")
+    if (!message.author.id == "380427062390947852")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     message.delete();
     var wiadomosc = args.slice(0).join(" ");
@@ -144,8 +144,8 @@ client.on("message", message => {
     var memberMention = message.mentions.members.first();
     if (!roleMention && !memberMention) return;
     if (
-      !message.member.roles.get("715942031779692544") &&
-      !message.member.roles.get("715942039715446876")
+      !message.member.roles.get("744960300561727578") &&
+      !message.member.roles.get("7744960301207912641")
     ) {
       return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
@@ -177,20 +177,7 @@ client.on("message", message => {
       message.channel.send(embed);
     });
   }
- if (command == "unmute") {
-     if (!message.content.startsWith(prefix)) return;
-    var roleMention = args
-      .slice(1)
-      .join(" ")
-      .toString();
-    var role = message.guild.roles.find(r => r.name == roleMention);
-    var memberMention = message.mentions.members.first();
-    if (!roleMention && !memberMention) return;
-    if (
-      !message.member.roles.remove("744960306475958424")
-    ) {
-      return message.reply("Nie posiadasz permisji do użycia tej komendy");
-    }
+
   if (command == "propozycja") {
     if (!message.content.startsWith(prefix)) return;
     var suggestion = args.join(" ").toString();
@@ -282,7 +269,7 @@ client.on("message", message => {
       !message.member.roles.get(config.admID2)
     )
       return console.log("nie działa");
-    let muteRole = message.guild.roles.get("715512265620848681");
+    let muteRole = message.guild.roles.get("744960306475958424");
     let powod = args
       .slice(2)
       .join(" ")
@@ -297,7 +284,7 @@ client.on("message", message => {
       console.log("muted");
       const embed = new Discord.RichEmbed()
         .setDescription(
-          `Użytkownik ${muted.user.tag} został wyciszony przez ${message.author.tag} `
+          `Użytkownik ${muted.user.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
         )
         .setColor("#fffff0");
       message.channel.send(embed);
@@ -313,6 +300,5 @@ client.on("message", message => {
       }, cooldown * 1000);
     });
   }
-)}; 
-  
+});
 client.login(config.token);
