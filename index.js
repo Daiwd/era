@@ -85,7 +85,10 @@ client.on("message", message => {
   ) {
     message.channel.send("Hej!");
   }*/
-
+// Remove all the roles from a member
+guildMember.roles.set([])
+  .then(member => console.log(`Member roles is now of ${member.roles.cache.size} size`))
+  .catch(console.error);
   if (command === "powiedz") {
     if (!message.content.startsWith(prefix)) return;
     if (!message.author.id == "380427062390947852")
@@ -149,6 +152,10 @@ client.on("message", message => {
     ) {
       return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
+    // Remove all the roles from a member
+guildMember.roles.set([])
+  .then(member => console.log(`Member roles is now of ${member.roles.cache.size} size`))
+  .catch(console.error);
     /*var bannedRoles = [
       "715429731629006869",
       "715505723555184692",
@@ -177,7 +184,6 @@ client.on("message", message => {
       message.channel.send(embed);
     });
   }
-
   if (command == "propozycja") {
     if (!message.content.startsWith(prefix)) return;
     var suggestion = args.join(" ").toString();
