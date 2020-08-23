@@ -260,8 +260,7 @@ client.on("message", message => {
         .setTitle("BAN");
       message.channel.send(embed);
     });
-  }
-
+    
   if (command == "mute") {
     if (!message.content.startsWith(prefix)) return;
     if (
