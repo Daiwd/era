@@ -291,7 +291,7 @@ client.on("message", message => {
       member.send(
         embed
           .setDescription(
-            `Zostałeś wyciszony przez ${message.author.tag} za \${powod}\ `
+            `Zostałeś zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
           )
           .setFooter(member.user.avatarURL)
       );
