@@ -284,15 +284,17 @@ client.on("message", message => {
       console.log("muted");
       const embed = new Discord.RichEmbed()
         .setDescription(
-          `Użytkownik ${muted.user.tag} został wyciszony za \${powod}\ `
+          `Użytkownik ${muted.user.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
         )
         .setColor("#fffff0");
       message.channel.send(embed);
       member.send(
         embed
           .setDescription(
-            `Zostałeś wyciszony za \${powod}\ `
+            `Zostałeś zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
           )
+          .setFooter(member.user.avatarURL)
+      );
       setTimeout(function() {
         muted.removeRole(muteRole);
       }, cooldown * 1000);
