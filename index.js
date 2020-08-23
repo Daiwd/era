@@ -293,7 +293,7 @@ client.on("message", message => {
           .setDescription(
             `Zostałeś zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
           )
-          .setFooter(member.user.avatarURL)
+          .setFooter(member.user.id)
       );
       setTimeout(function() {
         muted.removeRole(muteRole);
