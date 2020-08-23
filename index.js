@@ -284,7 +284,7 @@ client.on("message", message => {
       console.log("muted");
       const embed = new Discord.RichEmbed()
         .setDescription(
-          `Użytkownik ${muted.user.tag} został zmutowanza ${powod}
+          `Użytkownik ${muted.user.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
         )
         .setColor("#fffff0");
       message.channel.send(embed);
