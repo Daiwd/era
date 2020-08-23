@@ -313,6 +313,6 @@ client.on("message", message => {
       }, cooldown * 1000);
     });
   }
-}); 
+)}; 
   
 client.login(config.token);
