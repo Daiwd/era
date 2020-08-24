@@ -222,8 +222,8 @@ client.on("message", message => {
     let member = message.mentions.members.first();
     let cooldown = parseInt(args[1]);
     console.log(
-      muteRole.name + " " + powod + " " + member.user.tag + ""
-    )
+      muteRole.name + " " + powod + " " + member.user.tag + " " + cooldown
+    );
     if (member.roles.get(muteRole.id)) return;
     member.addRole(muteRole.id).then(muted => {
       console.log("muted");
@@ -238,7 +238,7 @@ client.on("message", message => {
           .setDescription(
             `Zostałeś wyciszony przez ${message.author.tag} za powód: \`${powod}\` `
           )
-          .setFooter(member.user.avatar)
+          .setFooter(member.user.avatarURL)
       );
       setTimeout(function() {
         muted.removeRole(muteRole);
