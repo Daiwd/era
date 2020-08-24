@@ -229,16 +229,16 @@ client.on("message", message => {
       console.log("muted");
       const embed = new Discord.RichEmbed()
         .setDescription(
-          `Użytkownik ${muted.user.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
+          `Użytkownik ${muted.user.tag} został zmutowany przez ${message.author.tag} za !mute @Szajko 100000 e na ${cooldown} sekund`
         )
         .setColor("#fffff0");
       message.channel.send(embed);
       member.send(
         embed
           .setDescription(
-            `Zostałeś zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
+            `Zostałeś zmutowany przez ${message.author.tag) powód: `
           )
-          .setFooter(member.user.avatarURL)
+          .setFooter(member.user.avatar)
       );
       setTimeout(function() {
         muted.removeRole(muteRole);
