@@ -43,7 +43,7 @@ client.on("message", message => {
     const embed = new Discord.RichEmbed()
       .setColor("#ffff45")
       .setDescription(wiadomosc);
-}
+  }
   if (command === "status") {
     if (!message.content.startsWith(prefix)) return;
     if (!message.author.id == "380427062390947852")
@@ -95,10 +95,6 @@ client.on("message", message => {
     ) {
       return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
-    // Remove all the roles from a member
-guildMember.roles.set([])
-  .then(member => console.log(`Member roles is now of ${member.roles.cache.size} size`))
-  .catch(console.error);
     /*var bannedRoles = [
       "715429731629006869",
       "715505723555184692",
