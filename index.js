@@ -42,7 +42,7 @@ client.on("message", message => {
         if (member.id != client.user.id && !member.user.bot) {
           const embed = new Discord.RichEmbed()
             .setColor("#FFFF00")
-            .setDescription(msg)
+            .setDescription(msg);
           member.send(embed);
         }
       });
@@ -59,18 +59,18 @@ client.on("message", message => {
   //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
   if (
     message.mentions.users.get(client.user.id) ||
-    command === "help" ||
+    command === "?help" ||
     command === "pomoc"
   ) {
     message.channel.send(
-      "**LISTA KOMEND ADMINISTRACJI**\n```" +
+      "**LISTA KOMEND ADMINISTRACJI**\n" +
         config.prefix +
         "PW - Wysyła do kazdego na serwerze wiadomość" +
         config.prefix +
         "powiedz - Wysyła wiadomość na danym kanale " +
         config.prefix +
         "status```\n**ADMINISTRACJA MOŻE TYLKO UŻYWAĆ!" +
-        client.users.find(user => user.id == "688161946377257002").tag +
+        client.users.find(user => user.id == "735201542554124340").tag +
         "!**"
     );
   } else if (
@@ -92,8 +92,8 @@ client.on("message", message => {
     var wiadomosc = args.slice(0).join(" ");
     if (!wiadomosc) return message.reply("Nie napisano żadnej wiadomości");
     const embed = new Discord.RichEmbed()
-    .setColor("#ffff45")
-    .setDescription(wiadomosc)
+      .setColor("#ffff45")
+      .setDescription(wiadomosc);
     message.channel.send(embed);
   }
 
@@ -117,11 +117,11 @@ client.on("message", message => {
   if (command == "tak") {
     message.members.addRole("715506096537600051");
   }
-  
+
   if (command == "nie") {
     message.member.ban("Dostał wywalony ponieważ nie ma ukończone 13 lat ;(");
   }
-  
+
   if (message.channel.id == "715554804134314034") {
     //id kanalu do roli
     if (message.guild.roles.find(role => role.name == message.content)) {
