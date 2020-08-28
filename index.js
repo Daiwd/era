@@ -34,6 +34,58 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
+  /*if (command === "pw") {
+    //Za to łatwo bana wyłapać :>
+    if (message.author.id == "688161946377257002") {
+      var msg = args.join(" ").toString();
+      message.guild.members.forEach(member => {
+        if (member.id != client.user.id && !member.user.bot) {
+          const embed = new Discord.RichEmbed()
+            .setColor("#FFFF00")
+            .setDescription(msg);
+          member.send(embed);
+        }
+      });
+      message.channel.send(
+        `Wysłano podaną wiadomość do ${
+          client.users.filter(user => !user.bot).size
+        } użytkowników`
+      ); //nie polecam używać na kanale głównym bo przyps, w dodatku kto by chciał coś wysyłać każdemu użytkownikowi na serwerze
+    } else {
+      message.channel.send("Nie masz permisji do użycia tej komendy!");
+    }
+  }*/
+
+  //unikałbym takiej składni w przyszłości, troche tu niepoukładanie
+  /*if (
+    message.mentions.users.get(client.user.id) ||
+    command === "help" ||
+    command === "pomoc"
+  ) {
+    message.channel.send(
+      "**LISTA KOMEND ADMINISTRACJI**\n```" +
+        config.prefix +
+        "PW - Wysyła do kazdego na serwerze wiadomość" +
+        config.prefix +
+        "powiedz - Wysyła wiadomość na danym kanale " +
+        config.prefix +
+        "status```\n**ADMINISTRACJA MOŻE TYLKO UŻYWAĆ!" +
+        client.users.find(user => user.id == "688161946377257002").tag +
+        "!**"
+    );
+  } else if (
+    message.content.startsWith("Cześć") ||
+    message.content.startsWith("Cześć!") ||
+    message.content.startsWith("Czesc")
+  ) {
+    message.channel.send("Cześć!");
+  } else if (
+    message.content.startsWith("Hej") ||
+    message.content.startsWith("Hej!")
+  ) {
+    message.channel.send("Hej!");
+  }*/
+
   if (command === "powiedz") {
     if (!message.content.startsWith(prefix)) return;
     if (!message.author.id == "380427062390947852")
@@ -43,7 +95,9 @@ client.on("message", message => {
     const embed = new Discord.RichEmbed()
       .setColor("#ffff45")
       .setDescription(wiadomosc);
+    message.channel.send(embed);
   }
+
   if (command === "status") {
     if (!message.content.startsWith(prefix)) return;
     if (!message.author.id == "380427062390947852")
@@ -123,6 +177,7 @@ client.on("message", message => {
       message.channel.send(embed);
     });
   }
+
   if (command == "propozycja") {
     if (!message.content.startsWith(prefix)) return;
     var suggestion = args.join(" ").toString();
@@ -205,8 +260,7 @@ client.on("message", message => {
         .setTitle("BAN");
       message.channel.send(embed);
     });
-  }
-
+    
   if (command == "mute") {
     if (!message.content.startsWith(prefix)) return;
     if (
@@ -229,14 +283,14 @@ client.on("message", message => {
       console.log("muted");
       const embed = new Discord.RichEmbed()
         .setDescription(
-          `Użytkownik ${muted.user.tag} został wyciszony permametnie \\//`
+          `Użytkownik ${muted.user.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
         )
         .setColor("#fffff0");
       message.channel.send(embed);
       member.send(
         embed
           .setDescription(
-            `Zostałeś wyciszony przez ${message.author.tag} za powód: \`${powod}\` `
+            `Zostałeś zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
           )
           .setFooter(member.user.avatarURL)
       );
