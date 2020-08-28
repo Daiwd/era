@@ -88,7 +88,7 @@ client.on("message", message => {
 
   if (command === "powiedz") {
     if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "380427062390947852")
+    if (!message.author.id == "688161946377257002")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     var wiadomosc = args.slice(0).join(" ");
     if (!wiadomosc) return message.reply("Nie napisano żadnej wiadomości");
@@ -100,7 +100,7 @@ client.on("message", message => {
 
   if (command === "status") {
     if (!message.content.startsWith(prefix)) return;
-    if (!message.author.id == "380427062390947852")
+    if (!message.author.id == "688161946377257002")
       return message.channel.send("Nie masz permisji do użycia tej komendy!");
     message.delete();
     var wiadomosc = args.slice(0).join(" ");
@@ -144,8 +144,8 @@ client.on("message", message => {
     var memberMention = message.mentions.members.first();
     if (!roleMention && !memberMention) return;
     if (
-      !message.member.roles.get("744960300561727578") &&
-      !message.member.roles.get("7744960301207912641")
+      !message.member.roles.get("715942031779692544") &&
+      !message.member.roles.get("715942039715446876")
     ) {
       return message.reply("Nie posiadasz permisji do użycia tej komendy");
     }
@@ -260,7 +260,8 @@ client.on("message", message => {
         .setTitle("BAN");
       message.channel.send(embed);
     });
-    
+  }
+
   if (command == "mute") {
     if (!message.content.startsWith(prefix)) return;
     if (
@@ -268,7 +269,7 @@ client.on("message", message => {
       !message.member.roles.get(config.admID2)
     )
       return console.log("nie działa");
-    let muteRole = message.guild.roles.get("744960306475958424");
+    let muteRole = message.guild.roles.get("715512265620848681");
     let powod = args
       .slice(2)
       .join(" ")
@@ -283,14 +284,14 @@ client.on("message", message => {
       console.log("muted");
       const embed = new Discord.RichEmbed()
         .setDescription(
-          `Użytkownik ${muted.user.tag} został zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
+          `Użytkownik ${muted.user.tag} został wyciszony przez ${message.author.tag} `
         )
         .setColor("#fffff0");
       message.channel.send(embed);
       member.send(
         embed
           .setDescription(
-            `Zostałeś zmutowany przez ${message.author.tag} za \`${powod}\` na ${cooldown} sekund`
+            `Zostałeś wyciszony przez ${message.author.tag} za \${powod}\ `
           )
           .setFooter(member.user.avatarURL)
       );
