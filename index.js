@@ -34,9 +34,9 @@ client.on("message", message => {
     .trim()
     .split(/ +/g);
   const command = args.shift().toLowerCase();
-  if (command === "informacja") {
+  if (command === "pw") {
     //Za to łatwo bana wyłapać :>
-    if (message.author.id == "688161946377257002") {
+    if (message.author.id == "735201542554124340") {
       var msg = args.join(" ").toString();
       message.guild.members.forEach(member => {
         if (member.id != client.user.id && !member.user.bot) {
@@ -63,29 +63,11 @@ client.on("message", message => {
     command === "pomoc"
   ) {
     message.channel.send(
-      "**LISTA KOMEND ADMINISTRACJI**\n" +
-        config.prefix +
-        "PW - Wysyła do kazdego na serwerze wiadomość" +
-        config.prefix +
-        "powiedz - Wysyła wiadomość na danym kanale " +
-        config.prefix +
-        "status```\n**ADMINISTRACJA MOŻE TYLKO UŻYWAĆ!" +
-        client.users.find(user => user.id == "735201542554124340").tag +
-        "!**"
+      "**BOT OFFLINE**"
     );
   } else if (
     message.content.startsWith("Cześć") ||
-    message.content.startsWith("Cześć!") ||
-    message.content.startsWith("Czesc")
-  ) {
-    message.channel.send("Cześć!");
-  } else if (
-    message.content.startsWith("Hej") ||
-    message.content.startsWith("Hej!")
-  ) {
-    message.channel.send("Hej!");
-  }
-
+  
   if (command === "powiedz") {
     if (!message.author.id == "688161946377257002")
       return message.channel.send("Nie masz permisji do użycia tej komendy!"); //poprawiłem trochę kod by było bardziej przejrzyście
