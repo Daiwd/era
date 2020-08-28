@@ -1,9 +1,0 @@
-{
-  "pw": {
-    "command": "PW",
-    "description": ""
-  },
-  "ping": {
-    "command": "ping"
-  }
-}
